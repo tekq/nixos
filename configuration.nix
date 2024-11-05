@@ -51,7 +51,7 @@
 
   # services.libinput.enable = true;
 
-  sops.defaultSopsFile = ./secrets.yaml;
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.age.keyFile = "/var/lib/sops-nix/key.txt";
   sops.age.generateKey = true;
   sops.secrets.my-password.neededForUsers = true;
