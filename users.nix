@@ -7,7 +7,7 @@
     };
 
     lexi = {
-      # initialHashedPassword = "";
+      hashedPasswordFile = config.sops.secrets.my-password.path;
       extraGroups = [ "wheel" "networkmanager" ];
       shell = pkgs.zsh;
     };
