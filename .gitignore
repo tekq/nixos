@@ -1,1 +1,2 @@
 secrets/.sops.yaml
+flake.lock

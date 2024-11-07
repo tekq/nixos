@@ -20,6 +20,7 @@
 	./gaming.nix
 	./kernel.nix
 	./kvm.nix	
+	./users.nix
 
 	inputs.nix-gaming.nixosModules.platformOptimizations
 	chaotic.nixosModules.default
