@@ -51,6 +51,7 @@
 	gnome-calculator
 	libreoffice
 	age
+	transmission-gtk
 
 	# Gaming
 	heroic
