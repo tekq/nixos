@@ -52,6 +52,7 @@
 	libreoffice
 	age
 	transmission-gtk
+	bottles
 
 	# Gaming
 	heroic
