@@ -15,10 +15,10 @@
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
-	./nvidia.nix
 	./systemd.nix
 	./gaming.nix
-	./kernel.nix
+	# ./kernel.nix
+	./nvidia.nix
 	./kvm.nix	
 	./users.nix
 
