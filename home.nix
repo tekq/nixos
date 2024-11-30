@@ -28,7 +28,7 @@
 	# Themes
 	adw-gtk3
 	morewaita-icon-theme
-	(nerdfonts.override { fonts = [ "Hack" ]; })
+	nerd-fonts.hack
 	lato
 
         # Rust Replacements

@@ -51,6 +51,14 @@
 
   # services.libinput.enable = true;
 
+  # Kernel
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
+
+  boot.kernel.sysctl = {
+    "kernel.core_pattern" = "/dev/null";
+  };
+
+
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.age.keyFile = "/var/lib/sops-nix/key.txt";
   sops.age.generateKey = true;
