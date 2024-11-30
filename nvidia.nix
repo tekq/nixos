@@ -6,7 +6,7 @@
   };
 
   boot.initrd.kernelModules = [ "nvidia" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+  # boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
   services.xserver.videoDrivers = ["nvidia"];
 
@@ -25,6 +25,6 @@
 
     forceFullCompositionPipeline = false;
 
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 }

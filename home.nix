@@ -63,9 +63,9 @@
 
         # IDEs
         jetbrains.clion
-	jetbrains.rider
+	# jetbrains.rider
 	jetbrains.pycharm-professional
-	unityhub
+	# unityhub
 
 	# py
 	python313Full
