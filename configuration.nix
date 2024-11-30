@@ -52,7 +52,7 @@
   # services.libinput.enable = true;
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
   boot.kernel.sysctl = {
     "kernel.core_pattern" = "/dev/null";
@@ -76,7 +76,7 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-
+ 
   nix.settings.trusted-users = [ "root" "lexi" ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
