@@ -17,7 +17,7 @@
         ./configuration.nix
 	./systemd.nix
 	./gaming.nix
-	# ./kernel.nix
+	./kernel.nix
 	./nvidia.nix
 	./kvm.nix	
 	./users.nix
