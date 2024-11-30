@@ -18,7 +18,7 @@
         gnome-tweaks
 	nautilus
 	tidal-hifi
-	discord
+	discord-krisp
         git
         curl
         wget
