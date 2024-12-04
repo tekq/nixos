@@ -52,7 +52,8 @@
   # services.libinput.enable = true;
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  #boot.kernelPackages = pkgs.linuxPackages_cachyos-rc;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.kernel.sysctl = {
     "kernel.core_pattern" = "/dev/null";
