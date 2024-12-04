@@ -51,7 +51,7 @@
 	gnome-calculator
 	libreoffice
 	age
-	transmission-gtk
+	transmission_4-gtk
 	bottles
 
 	# Gaming
