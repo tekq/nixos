@@ -12,10 +12,10 @@
 
   home.packages = with pkgs; [
         firefox-wayland
-	chrome-gnome-shell
+	# chrome-gnome-shell
         hyfetch
-	gnome-console
-        gnome-tweaks
+	# gnome-console
+        # gnome-tweaks
 	nautilus
 	tidal-hifi
 	discord-krisp
@@ -26,8 +26,8 @@
 	zip
 
 	# Themes
-	adw-gtk3
-	morewaita-icon-theme
+	#adw-gtk3
+	#morewaita-icon-theme
 	nerd-fonts.hack
 	lato
 
