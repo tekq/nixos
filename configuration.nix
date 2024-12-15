@@ -44,6 +44,10 @@
   # environment.gnome.excludePackages = [ pkgs.gnome-tour ];
   services.xserver.excludePackages = [ pkgs.xterm ];
 
+  security.sudo.extraConfig = ''
+    Defaults pwfeedback
+  '';
+
   environment.systemPackages = [
     pkgs.logiops
   ];
