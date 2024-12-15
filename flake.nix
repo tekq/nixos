@@ -8,9 +8,11 @@
 	url = "github:nix-community/home-manager/master";
 	inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-gaming, chaotic, sops-nix, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nix-gaming, chaotic, sops-nix, nixos-cosmic, ... }@inputs: {
     nixosConfigurations.Hydra = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -24,6 +26,13 @@
 	inputs.nix-gaming.nixosModules.platformOptimizations
 	chaotic.nixosModules.default
 	sops-nix.nixosModules.sops
+        {
+        nix.settings = {
+             substituters = [ "https://cosmic.cachix.org/" ];
+             trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+           };
+         }
+         nixos-cosmic.nixosModules.default
 
         home-manager.nixosModules.home-manager
         {

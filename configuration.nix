@@ -8,10 +8,19 @@
     efi.canTouchEfiVariables = true;
   };
 
+  boot.initrd = {
+    luks.devices."system".keyFile = "/etc/keys/root.key";
+    
+    secrets = {
+      "/etc/keys/root.key" = /etc/keys/root.key;
+    };
+  };
+
   # Networking
   networking.hostName = "Hydra";
   networking.networkmanager.enable = true;
   systemd.services."NetworkManager-wait-online.service".wantedBy = lib.mkForce [ ];
+  services.vnstat.enable = true;
 
   # Time and Locale
   time.timeZone = "Europe/Bucharest";
@@ -24,12 +33,15 @@
   # X11/UI 
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-    # xkb.layout = "us";
+    #displayManager.gdm.enable = true;
+    #desktopManager.gnome.enable = true;
+    xkb.layout = "us";
   };
-  services.gnome.core-utilities.enable = false;
-  environment.gnome.excludePackages = [ pkgs.gnome-tour ];
+
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
+  # services.gnome.core-utilities.enable = false;
+  # environment.gnome.excludePackages = [ pkgs.gnome-tour ];
   services.xserver.excludePackages = [ pkgs.xterm ];
 
   environment.systemPackages = [
