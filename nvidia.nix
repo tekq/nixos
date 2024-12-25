@@ -26,7 +26,7 @@
 
     open = false;
 
-    nvidiaSettings = false;
+    nvidiaSettings = true;
 
     forceFullCompositionPipeline = false;
 
