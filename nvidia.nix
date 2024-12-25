@@ -9,7 +9,7 @@
   # boot.kernelModules = [ "amdgpu" ];
   # boot.initrd.kernelModules = [ "amdgpu" "nvidia" ];
   
-  # boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
   
   boot.initrd.kernelModules = [ "nvidia" ];
 
