@@ -5,11 +5,13 @@
     enable = true;
   };
 
-  boot.kernelModules = [ "amdgpu" ];
-  boot.initrd.kernelModules = [ "amdgpu" "nvidia" ];
+  ## AMD
+  # boot.kernelModules = [ "amdgpu" ];
+  # boot.initrd.kernelModules = [ "amdgpu" "nvidia" ];
+  
   # boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
-
-  services.xserver.videoDrivers = ["nvidia"];
+  
+  boot.initrd.kernelModules = [ "nvidia" ];
 
   boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
 
@@ -28,6 +30,6 @@
 
     forceFullCompositionPipeline = false;
 
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 }

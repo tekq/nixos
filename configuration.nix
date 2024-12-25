@@ -33,15 +33,15 @@
   # X11/UI 
   services.xserver = {
     enable = true;
-    #displayManager.gdm.enable = true;
-    #desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
     xkb.layout = "us";
   };
 
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
-  # services.gnome.core-utilities.enable = false;
-  # environment.gnome.excludePackages = [ pkgs.gnome-tour ];
+  #services.desktopManager.cosmic.enable = true;
+  #services.displayManager.cosmic-greeter.enable = true;
+  services.gnome.core-utilities.enable = false;
+  environment.gnome.excludePackages = [ pkgs.gnome-tour ];
   services.xserver.excludePackages = [ pkgs.xterm ];
 
   security.sudo.extraConfig = ''
@@ -68,8 +68,9 @@
   # services.libinput.enable = true;
 
   # Kernel
-  #boot.kernelPackages = pkgs.linuxPackages_cachyos-rc;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  services.scx.enable = true;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.kernel.sysctl = {
     "kernel.core_pattern" = "/dev/null";
