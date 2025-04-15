@@ -9,6 +9,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
+
   networking.hostName = "9R";
   networking.networkmanager.enable = true;
   networking.hostId = "cc81040a";
@@ -22,6 +24,12 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.gnome.core-utilities.enable = false;
+
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
+
 
   services.xserver.xkb.layout = "us";
   services.xserver.xkb.variant = "dvorak";
@@ -37,15 +45,19 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  programs.zsh.enable = true;
 
   users.users.stella = {
     description = "Assembly";
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    # shell = pkgs.zsh;
+    shell = pkgs.zsh;
     hashedPasswordFile = config.sops.secrets.stella-password.path;
   };
+
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "Hack" ]; })
+  ];
 
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.age.keyFile = "/home/stella/.config/sops/age/keys.txt";

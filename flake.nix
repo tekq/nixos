@@ -7,11 +7,10 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, sops-nix, home-manager,  ... }@inputs: {
+  outputs = { self, nixpkgs, sops-nix, home-manager, ... }@inputs: {
     nixosConfigurations."9R" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [

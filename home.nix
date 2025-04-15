@@ -38,9 +38,9 @@
     tokei
     bottom
 
-    # nerd-fonts.hack
-    morewaita-icon-theme
     gnomeExtensions.gnome-40-ui-improvements
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.gsconnect    
 
     prismlauncher
   ];
@@ -50,9 +50,33 @@
       disable-user-extensions = false;
       enabled-extensions = [
         "gnome-ui-tune@itstime.tech"
+	"gsconnect@andyholmes.github.io"
+	"dash-to-dock@micxgx.gmail.com"
       ];
+    "org/gnome/desktop/interface/monospace-font-name" = "Hack Nerd Font Mono 10";
     };
   };
+
+  gtk = {
+    enable = true;
+    
+    theme = { 
+      package = pkgs.adw-gtk3;
+      name = "adw-gtk3-dark";
+    };
+
+    font = {
+      package = pkgs.inter;
+      name = "Inter";
+    };
+
+    iconTheme = {
+      package = pkgs.morewaita-icon-theme;   
+      name = "MoreWaita";
+    };
+  };
+
+  qt.platformTheme = "gnome";
 
   programs.zsh = {
     enable = true;
