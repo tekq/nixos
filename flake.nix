@@ -14,11 +14,12 @@
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations."9R" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      modules = [
+      modules = [ 
         ./configuration.nix
         ./nvidia.nix
 	./gaming.nix
         ./noexec.nix
+        ./sudo.nix
         inputs.sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
         { 
