@@ -20,6 +20,7 @@
 	./gaming.nix
         ./noexec.nix
         ./sudo.nix
+        ./no-def.nix
         inputs.sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
         { 
