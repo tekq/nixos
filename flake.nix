@@ -18,9 +18,13 @@
         ./configuration.nix
         ./nvidia.nix
 	./gaming.nix
+
+        # Security
         ./noexec.nix
         ./sudo.nix
         ./no-def.nix
+        ./auditd.nix
+
         inputs.sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
         { 
