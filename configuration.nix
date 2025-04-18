@@ -25,6 +25,10 @@
   services.xserver.desktopManager.gnome.enable = true;
   services.gnome.core-utilities.enable = false;
 
+  ## COSMIC
+  # services.desktopManager.cosmic.enable = true;
+  # services.displayManager.cosmic-greeter.enable = true;
+
   programs.kdeconnect = {
     enable = true;
     package = pkgs.gnomeExtensions.gsconnect;
@@ -58,6 +62,9 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "Hack" ]; })
   ];
+
+  programs.gamemode.enable = true;
+  programs.gamescope.enable = true;
 
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.age.keyFile = "/home/stella/.config/sops/age/keys.txt";

@@ -11,7 +11,7 @@
     gnome-console
     nautilus
     tidal-hifi
-    discord
+    # discord
     unzip
     zip
     vim
@@ -39,8 +39,9 @@
     bottom
 
     gnomeExtensions.gnome-40-ui-improvements
-    gnomeExtensions.dash-to-dock
     gnomeExtensions.gsconnect    
+    gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.desaturated-tray-icons
 
     prismlauncher
   ];
@@ -51,7 +52,8 @@
       enabled-extensions = [
         "gnome-ui-tune@itstime.tech"
 	"gsconnect@andyholmes.github.io"
-	"dash-to-dock@micxgx.gmail.com"
+        "trayIconsReloaded@selfmade.pl"
+        "desaturated-tray-icons@cr1337.github.com"
       ];
     "org/gnome/desktop/interface/monospace-font-name" = "Hack Nerd Font Mono 10";
     };
@@ -77,6 +79,19 @@
   };
 
   qt.platformTheme = "gnome";
+
+  programs.nixcord = {
+    enable = true;
+    discord.enable = false;
+    vesktop.enable = true;
+    config = {
+      themeLinks = [ "https://milbits.github.io/oldcord/src/main.css" ];
+      plugins = {
+        noProfileThemes.enable = true;
+        silentTyping.enable = true;
+      };
+    };
+  };
 
   programs.zsh = {
     enable = true;
