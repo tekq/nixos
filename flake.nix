@@ -20,7 +20,6 @@
 	./gaming.nix
 
         # Security
-        ./apparmor.nix
         ./noexec.nix
         ./sudo.nix
         ./no-def.nix
