@@ -22,8 +22,8 @@
     # unityhub
     # jetbrains.rider
     # jetbrains.idea-ultimate
-    # devenv
-    # gh
+    devenv
+    gh
 
     starship
 	
