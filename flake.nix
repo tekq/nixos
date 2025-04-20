@@ -15,9 +15,9 @@
     nixosConfigurations."9R" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ 
-        ./9r/configuration.nix
-        ./9r/nvidia.nix
-	./9r/gaming.nix
+        ./machines/9r/configuration.nix
+        ./machines/9r/nvidia.nix
+	./machines/9r/gaming.nix
         ./virt/podman.nix
 
         ./networking/tailscale.nix

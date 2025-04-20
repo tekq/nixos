@@ -68,7 +68,7 @@
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
 
-  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
   sops.age.keyFile = "/home/stella/.config/sops/age/keys.txt";
   sops.age.generateKey = true;
   sops.secrets.stella-password.neededForUsers = true;
