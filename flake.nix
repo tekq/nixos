@@ -15,21 +15,24 @@
     nixosConfigurations."9R" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ 
-        ./configuration.nix
-        ./nvidia.nix
-	./gaming.nix
+        ./9r/configuration.nix
+        ./9r/nvidia.nix
+	./9r/gaming.nix
+        ./virt/podman.nix
+
+        ./networking/tailscale.nix
 
         # Security
-        ./sudo.nix
-        ./no-def.nix
-        ./auditd.nix
+        ./security/sudo.nix
+        ./security/no-def.nix
+        ./security/auditd.nix
 
         inputs.sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
         { 
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.stella = import ./home.nix;
+          home-manager.users.stella = import ./user/stella.nix;
           home-manager.sharedModules = [ inputs.nixcord.homeManagerModules.nixcord ];
         }
       ];
