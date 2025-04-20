@@ -20,7 +20,6 @@
 	./gaming.nix
 
         # Security
-        ./noexec.nix
         ./sudo.nix
         ./no-def.nix
         ./auditd.nix
