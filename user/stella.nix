@@ -11,7 +11,6 @@
     gnome-console
     nautilus
     tidal-hifi
-    # discord
     unzip
     zip
     vim
@@ -24,6 +23,7 @@
     # jetbrains.idea-ultimate
     devenv
     gh
+    git-lfs
 
     starship
 	
@@ -124,6 +124,11 @@
     initExtra = ''
     	eval "$(starship init zsh)"
     '';
+  };
+
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
   };
 
   home.stateVersion = "24.11";
