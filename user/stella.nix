@@ -55,7 +55,11 @@
         "trayIconsReloaded@selfmade.pl"
         "desaturated-tray-icons@cr1337.github.com"
       ];
-    "org/gnome/desktop/interface/monospace-font-name" = "Hack Nerd Font Mono 10";
+    };
+
+    "org/gnome/desktop" = {
+      "interface/monospace-font-name" = "Hack Nerd Font Mono 10";
+      "input-sources/xkb-options" = "caps:swapescape";
     };
   };
 

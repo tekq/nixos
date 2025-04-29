@@ -69,6 +69,8 @@
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
 
+  services.hardware.openrgb.enable = true;
+
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
   sops.age.keyFile = "/var/lib/sops-nix/keys.txt";
   sops.age.generateKey = true;

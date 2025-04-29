@@ -33,7 +33,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.stella = import ./user/stella.nix;
-          home-manager.sharedModules = [ inputs.nixcord.homeManagerModules.nixcord ];
+          home-manager.sharedModules = [ inputs.nixcord.homeModules.nixcord ];
         }
       ];
     };
