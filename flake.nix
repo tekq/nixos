@@ -26,6 +26,7 @@
         ./security/sudo.nix
         ./security/no-def.nix
         ./security/auditd.nix
+	./security/wipe-root.nix
 
         inputs.sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
