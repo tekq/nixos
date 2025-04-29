@@ -11,6 +11,8 @@
 
   boot.kernelPackages = pkgs.linuxPackages_6_12;
 
+  services.scx.enable = true; # by default uses scx_rustland scheduler
+
   networking.hostName = "9R";
   networking.networkmanager.enable = true;
   networking.hostId = "cc81040a";

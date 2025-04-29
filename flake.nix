@@ -9,6 +9,7 @@
     };
     sops-nix.url = "github:Mic92/sops-nix";
     nixcord.url = "github:kaylorben/nixcord";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -30,6 +31,10 @@
 
         inputs.sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
+        inputs.chaotic.nixosModules.nyx-cache
+        inputs.chaotic.nixosModules.nyx-overlay
+        inputs.chaotic.nixosModules.nyx-registry
+
         { 
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
