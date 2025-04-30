@@ -10,6 +10,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     nixcord.url = "github:kaylorben/nixcord";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -19,6 +20,7 @@
         ./machines/9r/configuration.nix
         ./machines/9r/nvidia.nix
 	./machines/9r/gaming.nix
+        ./machines/9r/impermanence.nix
         ./virt/podman.nix
 
         ./networking/tailscale.nix
@@ -34,6 +36,7 @@
         inputs.chaotic.nixosModules.nyx-cache
         inputs.chaotic.nixosModules.nyx-overlay
         inputs.chaotic.nixosModules.nyx-registry
+	inputs.impermanence.nixosModules.impermanence
 
         { 
           home-manager.useGlobalPkgs = true;

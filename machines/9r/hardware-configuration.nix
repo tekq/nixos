@@ -23,10 +23,10 @@
       fsType = "zfs";
     };
 
-  fileSystems."/var" =
-    { device = "zroot/local/var";
-      fsType = "zfs";
-    };
+  #fileSystems."/var" =
+  #  { device = "zroot/local/var";
+  #    fsType = "zfs";
+  #  };
 
   fileSystems."/home" =
     { device = "zroot/safe/home";
