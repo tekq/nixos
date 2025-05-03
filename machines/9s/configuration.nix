@@ -41,7 +41,9 @@
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
   sops.age.keyFile = "/nix/persist/var/lib/sops-nix/keys.txt";
   sops.age.generateKey = true;
-  # sops.secrets.root-password.neededForUsers = true;
+  sops.secrets.root-password.neededForUsers = true;
+
+  users.users.root.initialhashedPasswordFile = config.sops.secrets.root-password.path
 
   system.stateVersion = "24.05";
 }
