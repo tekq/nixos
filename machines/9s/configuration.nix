@@ -23,7 +23,7 @@
 
   services.xserver.enable = true;
 
-  #services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.gnome.core-utilities.enable = false;
 
@@ -42,9 +42,23 @@
   sops.age.keyFile = "/nix/persist/var/lib/sops-nix/keys.txt";
   sops.age.generateKey = true;
   sops.secrets.root-password.neededForUsers = true;
+  sops.secrets.stella-password.neededForUsers = true;
 
-  users.users.root.initialhashedPasswordFile = config.sops.secrets.root-password.path
+  users.users.root.hashedPasswordFile = config.sops.secrets.root-password.path;
+  programs.zsh.enable = true;
 
-  system.stateVersion = "24.05";
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "Hack" ]; })
+  ];
+
+  users.users.stella = {
+    description = "Assembly";
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    shell = pkgs.zsh;
+    hashedPasswordFile = config.sops.secrets.stella-password.path;
+  };
+
+  system.stateVersion = "24.11";
 }
 
