@@ -46,5 +46,14 @@
         }
       ];
     };
+
+    nixosConfiguration."9S" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./machines/9s/configuration.nix
+
+	inputs.sops-nix.nixosModules.sops
+      ];
+    };
   };
 }
