@@ -14,13 +14,13 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations."9R" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."2B" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ 
-        ./machines/9r/configuration.nix
-        ./machines/9r/nvidia.nix
-	./machines/9r/gaming.nix
-        ./machines/9r/impermanence.nix
+        ./machines/2b/configuration.nix
+        ./machines/2b/nvidia.nix
+	./machines/2b/gaming.nix
+        ./machines/2b/impermanence.nix
         ./virt/podman.nix
 
         ./networking/tailscale.nix

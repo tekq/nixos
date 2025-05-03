@@ -13,7 +13,7 @@
 
   # services.scx.enable = true;
 
-  networking.hostName = "9R";
+  networking.hostName = "2B";
   networking.networkmanager.enable = true;
   networking.hostId = "cc81040a";
 
@@ -74,13 +74,13 @@
   services.hardware.openrgb.enable = true;
 
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
-  sops.age.keyFile = "/var/lib/sops-nix/keys.txt";
+  sops.age.keyFile = "/persist/var/lib/sops-nix/keys.txt";
   sops.age.generateKey = true;
   sops.secrets.stella-password.neededForUsers = true;
 
-  environment.systemPackages = with pkgs; [
-    vim
-    git
+  environment.systemPackages = [
+    pkgs.vim
+    pkgs.git
   ];
 
   environment.variables.EDITOR = "vim";

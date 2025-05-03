@@ -23,11 +23,6 @@
       fsType = "zfs";
     };
 
-  #fileSystems."/var" =
-  #  { device = "zroot/local/var";
-  #    fsType = "zfs";
-  #  };
-
   fileSystems."/home" =
     { device = "zroot/safe/home";
       fsType = "zfs";
@@ -36,6 +31,7 @@
   fileSystems."/persist" =
     { device = "zroot/safe/persist";
       fsType = "zfs";
+      neededForBoot = true;
     };
 
   fileSystems."/boot" =

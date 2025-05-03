@@ -1,17 +1,16 @@
 {
-  environment.persistence."/persistent" = {
+  environment.persistence."/persist" = {
     enable = true;
     hideMounts = true;
     directories = [
-      "/var/lib/bluetooth"
       "/var/lib/nixos"
-      "/var/run/secrets-for-users/"
+      "/var/lib/bluetooth"
       "/etc/NetworkManager/system-connections"
       "/etc/nixos"
     ];
 
     files = [
-      "/var/lib/sops-nix/keys.txt"
+      "/var/lib/tailscale/tailscaled.state"
     ];
   };
 }
