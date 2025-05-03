@@ -36,6 +36,7 @@
 
   environment.systemPackages = with pkgs; [
     git
+    jetbrains.clion
   ];
 
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
@@ -58,6 +59,8 @@
     shell = pkgs.zsh;
     hashedPasswordFile = config.sops.secrets.stella-password.path;
   };
+
+  nixpkgs.config.allowUnfree = true; 
 
   system.stateVersion = "24.11";
 }
