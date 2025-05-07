@@ -21,6 +21,7 @@
         ./machines/2b/nvidia.nix
 	./machines/2b/gaming.nix
         ./machines/2b/impermanence.nix
+	./machines/2b/nh.nix
         ./virt/podman.nix
 
         ./networking/tailscale.nix

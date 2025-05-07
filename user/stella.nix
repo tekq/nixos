@@ -17,6 +17,7 @@
     tutanota-desktop
     galaxy-buds-client
     qbittorrent
+    mpv
 
     # unityhub
     # jetbrains.rider
