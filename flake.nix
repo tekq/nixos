@@ -21,7 +21,7 @@
         ./machines/2b/nvidia.nix
 	./machines/2b/gaming.nix
         ./machines/2b/impermanence.nix
-	./machines/2b/nh.nix
+	# ./machines/2b/nh.nix
         ./virt/podman.nix
 
         ./networking/tailscale.nix
@@ -31,6 +31,7 @@
         ./security/no-def.nix
         ./security/auditd.nix
 	./security/wipe-root.nix
+        ./security/secure-boot.nix
 
         inputs.sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager

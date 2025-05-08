@@ -78,8 +78,10 @@
     };
 
     iconTheme = {
-      package = pkgs.morewaita-icon-theme;   
-      name = "MoreWaita";
+      #package = pkgs.morewaita-icon-theme;   
+      #name = "MoreWaita";
+      package = pkgs.fluent-icon-theme;
+      name = "Fluent-dark";
     };
   };
 
