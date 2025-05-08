@@ -7,6 +7,7 @@
       "/var/lib/bluetooth"
       "/etc/NetworkManager/system-connections"
       "/etc/nixos"
+      "/etc/secureboot"
     ];
 
     files = [
