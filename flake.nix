@@ -43,6 +43,7 @@
         inputs.chaotic.nixosModules.nyx-overlay
         inputs.chaotic.nixosModules.nyx-registry
 	inputs.impermanence.nixosModules.impermanence
+        inputs.lanzaboote.nixosModules.lanzaboote
 
         { 
           home-manager.useGlobalPkgs = true;
