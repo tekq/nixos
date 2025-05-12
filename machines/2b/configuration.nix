@@ -78,6 +78,8 @@
   sops.age.generateKey = true;
   sops.secrets.stella-password.neededForUsers = true;
 
+  nixpkgs.overlays = [ ( final: prev: { dwl = prev.dwl.overrideAttrs { patches = [ ./user/dwl/ipc.patch ]; }; }) ]; 
+
   environment.systemPackages = [
     pkgs.vim
     pkgs.git
