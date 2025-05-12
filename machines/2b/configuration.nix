@@ -81,6 +81,8 @@
   environment.systemPackages = [
     pkgs.vim
     pkgs.git
+    # pkgs.dwl
+    pkgs.foot
   ];
 
   environment.variables.EDITOR = "vim";
