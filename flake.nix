@@ -26,6 +26,7 @@
 	./machines/2b/gaming.nix
         ./machines/2b/impermanence.nix
 	# ./machines/2b/nh.nix
+        ./machines/2b/dwl.nix
         ./virt/podman.nix
 
         ./networking/tailscale.nix
@@ -70,5 +71,19 @@
         }
       ];
     };
+
+    nixosConfigurations."15O" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./machines/15o/configuration.nix
+      ];
+    };
+    
+    nixosConfigurations."6O" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./machines/6o/configuration.nix
+      ];
+    };     
   };
 }
