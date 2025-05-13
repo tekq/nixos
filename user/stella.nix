@@ -50,7 +50,7 @@
     xclip
 
     (slstatus.override {
-      configH = ./dwl/slstatus.h;
+      conf = ./dwm/slstatus.h;
     })
   ];
 
