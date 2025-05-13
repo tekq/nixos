@@ -28,6 +28,8 @@
 	# ./machines/2b/nh.nix
         ./virt/podman.nix
 
+	./user/dwm/picom.nix
+
         ./networking/tailscale.nix
 
         # Security
