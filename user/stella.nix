@@ -48,6 +48,10 @@
     rofi
     maim
     xclip
+
+    (slstatus.override {
+      configH = ./dwl/slstatus.h;
+    })
   ];
 
   gtk = {
