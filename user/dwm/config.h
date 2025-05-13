@@ -120,4 +120,5 @@ static const Button buttons[] = {
 static const char *const autostart[] = {
 	{ "dunst", NULL },
 	{ "nitrogen", "--restore", NULL },
+	{ "picom", "--experimental-backend", NULL }
 };
