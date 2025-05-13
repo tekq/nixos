@@ -59,13 +59,15 @@ static const int focusonwheel = 0;
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+// static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
 static const Key keys[] = {
-	/* modifier                     key        function        argument */
+	/* modifier                     key        	function        argument */
 	{ MODKEY,                       XK_space,  	spawn,          {.v = dmenucmd } },
 	{ MODKEY,             		XK_Return, 	spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,		XK_o,		spawn,		SHCMD("maim -os | xclip -selection clipboard -t image/png") },
 	{ MODKEY,                       XK_b,      	togglebar,      {0} },
 	{ MODKEY,                       XK_j,      	focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      	focusstack,     {.i = -1 } },
@@ -118,7 +120,6 @@ static const Button buttons[] = {
 
 /* autostart */
 static const char *const autostart[] = {
-	{ "dunst", NULL },
-	{ "nitrogen", "--restore", NULL },
-	{ "picom", "--experimental-backend", NULL },
+	"dunst", NULL,
+	"nitrogen", "--restore", NULL,
 };

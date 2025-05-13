@@ -45,6 +45,9 @@
     dmenu
     dunst
     nitrogen
+    rofi
+    maim
+    xclip
   ];
 
   gtk = {

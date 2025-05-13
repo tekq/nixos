@@ -26,13 +26,14 @@
   #services.xserver.displayManager.gdm.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
   #services.gnome.core-utilities.enable = false;
-  # services.gnome.gnome-keyring.enable = true;
 
   ## COSMIC
   # services.desktopManager.cosmic.enable = true;
   # services.displayManager.cosmic-greeter.enable = true;
 
   programs.dconf.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
 
   ## DWM
   services.xserver.windowManager.dwm.enable = true;
