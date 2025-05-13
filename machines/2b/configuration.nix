@@ -32,16 +32,30 @@
   # services.desktopManager.cosmic.enable = true;
   # services.displayManager.cosmic-greeter.enable = true;
 
+  programs.dconf.enable = true;
+
   ## DWM
   services.xserver.windowManager.dwm.enable = true;
   services.xserver.windowManager.dwm.package = pkgs.dwm.override {
-    conf = ../../user/dwm/config.h
-    #patches = [
-    #  (pkgs.fetchpatch {
-    #    url = "https://dwm.suckless.org/patches/path/to/patch.diff";
-    #    hash = "";
-    #  })
-    #];
+    conf = ../../user/dwm/config.h;
+    patches = [
+      (pkgs.fetchpatch {
+        url = "https://dwm.suckless.org/patches/center/dwm-center-6.2.diff";
+        hash = "sha256-2uOVNtjR1c0eF5jbcUy51wgvBYHdPtUxZRWU4iz+zfs=";
+      })
+      (pkgs.fetchpatch {
+        url = "https://raw.githubusercontent.com/bakkeby/patches/refs/heads/master/dwm/dwm-resizepoint-6.5.diff";
+        hash = "sha256-vN97kH/o6Jck5TAvxu75hrgguP2AVgPSab2g0GwpUF0=";
+      })
+      (pkgs.fetchpatch {
+        url = "https://dwm.suckless.org/patches/focusonclick/dwm-focusonclick-20200110-61bb8b2.diff";
+        hash = "sha256-FDDBIXbUCEuVLaot3ju8yyqMWqrfCMGcVhV1kmKKusM=";
+      })
+      (pkgs.fetchpatch {
+        url = "https://dwm.suckless.org/patches/cool_autostart/dwm-cool-autostart-20240312-9f88553.diff";
+        hash = "sha256-pgXbgoAAewCjZP16smKkTVh5p7P/FK+Rue0F6gjmGVo=";
+      })
+    ];
   };
   
   programs.kdeconnect = {
@@ -90,11 +104,6 @@
   sops.age.keyFile = "/persist/var/lib/sops-nix/keys.txt";
   sops.age.generateKey = true;
   sops.secrets.stella-password.neededForUsers = true;
-
-  #nixpkgs.overlays = [ ( final: prev: { dwl = prev.dwl.overrideAttrs { patches = [ 
-  #  ../../user/dwl/ipc.patch 
-  #  ../../user/dwl/betterfloat.patch
-  #]; }; }) ]; 
 
   environment.systemPackages = [
     pkgs.vim

@@ -41,28 +41,31 @@
 
     prismlauncher
 
-    st
+    alacritty
+    dmenu
+    dunst
+    nitrogen
   ];
 
   gtk = {
-    enable = false;
+    enable = true;
     
     theme = { 
       package = pkgs.adw-gtk3;
       name = "adw-gtk3-dark";
     };
 
-    font = {
-      package = pkgs.inter;
-      name = "Inter";
-    };
+    #font = {
+    #  package = pkgs.inter;
+    #  name = "Inter";
+    #};
 
-    iconTheme = {
-      #package = pkgs.morewaita-icon-theme;   
-      #name = "MoreWaita";
-      package = pkgs.fluent-icon-theme;
-      name = "Fluent-dark";
-    };
+    #iconTheme = {
+    #  #package = pkgs.morewaita-icon-theme;   
+    #  #name = "MoreWaita";
+    #  package = pkgs.fluent-icon-theme;
+    #  name = "Fluent-dark";
+    #};
   };
 
   qt.platformTheme = "gnome";
