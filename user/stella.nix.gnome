@@ -39,13 +39,46 @@
     tokei
     bottom
 
+    gnomeExtensions.gnome-40-ui-improvements
+    gnomeExtensions.gsconnect    
+    gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.desaturated-tray-icons
+
     prismlauncher
 
-    st
+    #(dwl.override {
+    #  configH = ./dwl/config.h;
+    #})
+
+    #(dwlb.override {
+    #  configH = ./dwl/dwlb.h;
+    #})
+
+    #foot
+    #wmenu
+    #bemenu
+    #wbg
   ];
 
+  dconf.settings = {
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+      enabled-extensions = [
+        "gnome-ui-tune@itstime.tech"
+	"gsconnect@andyholmes.github.io"
+        "trayIconsReloaded@selfmade.pl"
+        "desaturated-tray-icons@cr1337.github.com"
+      ];
+    };
+
+    "org/gnome/desktop" = {
+      "interface/monospace-font-name" = "Hack Nerd Font Mono 10";
+      "input-sources/xkb-options" = "caps:swapescape";
+    };
+  };
+
   gtk = {
-    enable = false;
+    enable = true;
     
     theme = { 
       package = pkgs.adw-gtk3;

@@ -26,12 +26,24 @@
   #services.xserver.displayManager.gdm.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
   #services.gnome.core-utilities.enable = false;
-  services.gnome.gnome-keyring.enable = true;
+  # services.gnome.gnome-keyring.enable = true;
 
   ## COSMIC
   # services.desktopManager.cosmic.enable = true;
   # services.displayManager.cosmic-greeter.enable = true;
 
+  ## DWM
+  services.xserver.windowManager.dwm.enable = true;
+  services.xserver.windowManager.dwm.package = pkgs.dwm.override {
+    conf = ../../user/dwm/config.h
+    #patches = [
+    #  (pkgs.fetchpatch {
+    #    url = "https://dwm.suckless.org/patches/path/to/patch.diff";
+    #    hash = "";
+    #  })
+    #];
+  };
+  
   programs.kdeconnect = {
     enable = true;
     package = pkgs.gnomeExtensions.gsconnect;
@@ -79,15 +91,14 @@
   sops.age.generateKey = true;
   sops.secrets.stella-password.neededForUsers = true;
 
-  nixpkgs.overlays = [ ( final: prev: { dwl = prev.dwl.overrideAttrs { patches = [ 
-    ../../user/dwl/ipc.patch 
-    ../../user/dwl/betterfloat.patch
-  ]; }; }) ]; 
+  #nixpkgs.overlays = [ ( final: prev: { dwl = prev.dwl.overrideAttrs { patches = [ 
+  #  ../../user/dwl/ipc.patch 
+  #  ../../user/dwl/betterfloat.patch
+  #]; }; }) ]; 
 
   environment.systemPackages = [
     pkgs.vim
     pkgs.git
-    # pkgs.dwl
     pkgs.foot
   ];
 
