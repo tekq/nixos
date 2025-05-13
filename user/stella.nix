@@ -47,14 +47,7 @@
     prismlauncher
 
     (dwl.override {
-      # trying to supply config.home.homeDirectory here leads to "impure" usage.
-      # so disabling it for now.
-      # conf = (builtins.readFile "${config.home.homeDirectory}/.config/dwl/config.h");
       configH = ./dwl/config.h;
-
-      #patches = [
-      #  "https://raw.githubusercontent.com/NF02/dwl/main/patch/ipc-v2-fixed-wlroots17.patch"
-      #];
     })
 
     (dwlb.override {
@@ -63,7 +56,8 @@
 
     foot
     wmenu
-    # someblocks
+    bemenu
+    wbg
   ];
 
   dconf.settings = {

@@ -23,9 +23,10 @@
 
   services.xserver.enable = true;
 
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.gnome.core-utilities.enable = false;
+  #services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.desktopManager.gnome.enable = true;
+  #services.gnome.core-utilities.enable = false;
+  services.gnome.gnome-keyring.enable = true;
 
   ## COSMIC
   # services.desktopManager.cosmic.enable = true;
@@ -78,7 +79,10 @@
   sops.age.generateKey = true;
   sops.secrets.stella-password.neededForUsers = true;
 
-  nixpkgs.overlays = [ ( final: prev: { dwl = prev.dwl.overrideAttrs { patches = [ ./user/dwl/ipc.patch ]; }; }) ]; 
+  nixpkgs.overlays = [ ( final: prev: { dwl = prev.dwl.overrideAttrs { patches = [ 
+    ../../user/dwl/ipc.patch 
+    ../../user/dwl/betterfloat.patch
+  ]; }; }) ]; 
 
   environment.systemPackages = [
     pkgs.vim
