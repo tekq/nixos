@@ -41,8 +41,10 @@
 
     prismlauncher
 
+    neofetch
+
+    polybar
     alacritty
-    dmenu
     dunst
     nitrogen
     rofi
@@ -62,10 +64,10 @@
       name = "adw-gtk3-dark";
     };
 
-    #font = {
-    #  package = pkgs.inter;
-    #  name = "Inter";
-    #};
+    font = {
+      package = pkgs.inter;
+      name = "Inter";
+    };
 
     #iconTheme = {
     #  #package = pkgs.morewaita-icon-theme;   

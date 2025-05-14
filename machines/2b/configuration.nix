@@ -49,10 +49,6 @@
         hash = "sha256-vN97kH/o6Jck5TAvxu75hrgguP2AVgPSab2g0GwpUF0=";
       })
       (pkgs.fetchpatch {
-        url = "https://dwm.suckless.org/patches/focusonclick/dwm-focusonclick-20200110-61bb8b2.diff";
-        hash = "sha256-FDDBIXbUCEuVLaot3ju8yyqMWqrfCMGcVhV1kmKKusM=";
-      })
-      (pkgs.fetchpatch {
         url = "https://dwm.suckless.org/patches/cool_autostart/dwm-cool-autostart-20240312-9f88553.diff";
         hash = "sha256-pgXbgoAAewCjZP16smKkTVh5p7P/FK+Rue0F6gjmGVo=";
       })
@@ -60,6 +56,8 @@
 	url = "https://dwm.suckless.org/patches/hide_vacant_tags/dwm-hide_vacant_tags-6.4.diff";
 	hash = "sha256-GIbRW0Inwbp99rsKLfIDGvPwZ3pqihROMBp5vFlHx5Q=";
       })
+      ../../user/dwm/patches/ipc.patch
+      ../../user/dwm/patches/anybar-polybar.patch
     ];
   };
   
@@ -98,7 +96,7 @@
     (nerdfonts.override { fonts = [ "Hack" ]; })
   ];
 
-  virtualisation.waydroid.enable = true;
+  # virtualisation.waydroid.enable = true;
 
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
@@ -113,7 +111,6 @@
   environment.systemPackages = [
     pkgs.vim
     pkgs.git
-    pkgs.foot
   ];
 
   environment.variables.EDITOR = "vim";

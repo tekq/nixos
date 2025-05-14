@@ -6,8 +6,8 @@
       (final: prev: {
         picom = prev.picom.overrideAttrs (oldattrs: {
           src = fetchGit {
-            url = "https://github.com/jonaburg/picom.git";
-            rev = "65ad706ab8e1d1a8f302624039431950f6d4fb89";
+            url = "https://github.com/ibhagwan/picom";
+            rev = "c4107bb6cc17773fdc6c48bb2e475ef957513c7a";
           };
           nativeBuildInputs = (oldattrs.nativeBuildInputs or []) ++ [ pkgs.asciidoc ];
 
