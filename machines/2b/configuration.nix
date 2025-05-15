@@ -128,6 +128,7 @@
   environment.systemPackages = [
     pkgs.vim
     pkgs.git
+    pkgs.switcheroo-control
   ];
 
   environment.variables.EDITOR = "vim";
