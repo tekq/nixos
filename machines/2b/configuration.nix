@@ -64,6 +64,10 @@
 	url = "https://dwm.suckless.org/patches/barpadding/dwm-barpadding-20211020-a786211.diff";
 	hash = "sha256-0kUD9+5E3h8B8V+emP/EuNKUNRujseL5dzjjZTN/NSU=";
       })
+      #(pkgs.fetchpatch {
+	#url = "https://dwm.suckless.org/patches/anybar/dwm-anybar-polybar-tray-fix-20200810-bb2e722.diff";
+	#hash = "";
+      #})
     ];
   };
   

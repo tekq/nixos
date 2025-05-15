@@ -27,8 +27,6 @@
     git-lfs
 
     starship
-	
-    # alacritty
 
     bat
     eza
