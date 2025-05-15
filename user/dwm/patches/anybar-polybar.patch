@@ -1,6 +1,6 @@
-From c41666201570c218aca069944818fc3f04e13a15 Mon Sep 17 00:00:00 2001
+From a046eabd24a430ee2a7348a807057dc7c42f7cec Mon Sep 17 00:00:00 2001
 From: mihirlad55 <mihirlad55@gmail.com>
-Date: Sun, 26 Sep 2021 00:36:40 +0000
+Date: Sat, 5 Sep 2020 00:51:33 +0000
 Subject: [PATCH] Add support for managing external status bars
 
 This patch allows dwm to manage other status bars such as
@@ -32,7 +32,7 @@ The patch is developed at https://github.com/mihirlad55/dwm-anybar
  2 files changed, 182 insertions(+), 15 deletions(-)
 
 diff --git a/config.def.h b/config.def.h
-index a2ac963..03cc996 100644
+index 1c0b587..f45211b 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -5,6 +5,10 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -47,7 +47,7 @@ index a2ac963..03cc996 100644
  static const char dmenufont[]       = "monospace:size=10";
  static const char col_gray1[]       = "#222222";
 diff --git a/dwm.c b/dwm.c
-index 5e4d494..e7d7a2a 100644
+index 9fd0286..7bb5307 100644
 --- a/dwm.c
 +++ b/dwm.c
 @@ -47,8 +47,8 @@
@@ -442,5 +442,5 @@ index 5e4d494..e7d7a2a 100644
   * ignored (especially on UnmapNotify's). Other types of errors call Xlibs
   * default error handler, which may call exit. */
 -- 
-2.33.0
+2.28.0
 

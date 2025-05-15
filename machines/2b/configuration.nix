@@ -31,6 +31,10 @@
   # services.desktopManager.cosmic.enable = true;
   # services.displayManager.cosmic-greeter.enable = true;
 
+  hardware.bluetooth.enable = true; 
+  hardware.bluetooth.powerOnBoot = true; 
+  services.blueman.enable = true;
+
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
@@ -56,8 +60,10 @@
 	url = "https://dwm.suckless.org/patches/hide_vacant_tags/dwm-hide_vacant_tags-6.4.diff";
 	hash = "sha256-GIbRW0Inwbp99rsKLfIDGvPwZ3pqihROMBp5vFlHx5Q=";
       })
-      ../../user/dwm/patches/ipc.patch
-      ../../user/dwm/patches/anybar-polybar.patch
+      (pkgs.fetchpatch {
+	url = "https://dwm.suckless.org/patches/barpadding/dwm-barpadding-20211020-a786211.diff";
+	hash = "sha256-0kUD9+5E3h8B8V+emP/EuNKUNRujseL5dzjjZTN/NSU=";
+      })
     ];
   };
   

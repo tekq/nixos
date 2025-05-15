@@ -1,4 +1,4 @@
-{config, pkgs, lib, ...}:
+{ config, pkgs, lib, ...}:
 
 {
   home.username = "stella";
@@ -43,7 +43,6 @@
 
     neofetch
 
-    polybar
     alacritty
     dunst
     nitrogen
