@@ -1,6 +1,6 @@
-From 9c4c16485ac374583a1055ff7c26cba53ac92c05 Mon Sep 17 00:00:00 2001
+From a11b738714b35eab3847211f019b47b7290595c5 Mon Sep 17 00:00:00 2001
 From: mihirlad55 <mihirlad55@gmail.com>
-Date: Fri, 6 Nov 2020 17:13:42 +0000
+Date: Sat, 31 Oct 2020 15:32:39 +0000
 Subject: [PATCH] Add IPC support through a unix socket
 
 This patch currently supports the following requests:
@@ -275,7 +275,7 @@ index 7084c33..8570938 100644
  CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
 diff --git a/dwm-msg.c b/dwm-msg.c
 new file mode 100644
-index 0000000..1971d32
+index 0000000..0071781
 --- /dev/null
 +++ b/dwm-msg.c
 @@ -0,0 +1,548 @@
@@ -780,7 +780,7 @@ index 0000000..1971d32
 +  }
 +
 +  int i = 1;
-+  if (i < argc && strcmp(argv[i], "--ignore-reply") == 0) {
++  if (strcmp(argv[i], "--ignore-reply") == 0) {
 +    ignore_reply = 1;
 +    i++;
 +  }
@@ -3242,5 +3242,5 @@ index 0000000..ee9948e
 +
 +#endif  // YAJL_DUMPS_H_
 -- 
-2.29.2
+2.29.0
 

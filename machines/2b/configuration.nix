@@ -44,30 +44,23 @@
   services.xserver.windowManager.dwm.package = pkgs.dwm.override {
     conf = ../../user/dwm/config.h;
     patches = [
-      (pkgs.fetchpatch {
-        url = "https://dwm.suckless.org/patches/center/dwm-center-6.2.diff";
-        hash = "sha256-2uOVNtjR1c0eF5jbcUy51wgvBYHdPtUxZRWU4iz+zfs=";
-      })
-      (pkgs.fetchpatch {
-        url = "https://raw.githubusercontent.com/bakkeby/patches/refs/heads/master/dwm/dwm-resizepoint-6.5.diff";
-        hash = "sha256-vN97kH/o6Jck5TAvxu75hrgguP2AVgPSab2g0GwpUF0=";
-      })
-      (pkgs.fetchpatch {
-        url = "https://dwm.suckless.org/patches/cool_autostart/dwm-cool-autostart-20240312-9f88553.diff";
-        hash = "sha256-pgXbgoAAewCjZP16smKkTVh5p7P/FK+Rue0F6gjmGVo=";
-      })
-      (pkgs.fetchpatch {
-	url = "https://dwm.suckless.org/patches/hide_vacant_tags/dwm-hide_vacant_tags-6.4.diff";
-	hash = "sha256-GIbRW0Inwbp99rsKLfIDGvPwZ3pqihROMBp5vFlHx5Q=";
-      })
-      (pkgs.fetchpatch {
-	url = "https://dwm.suckless.org/patches/barpadding/dwm-barpadding-20211020-a786211.diff";
-	hash = "sha256-0kUD9+5E3h8B8V+emP/EuNKUNRujseL5dzjjZTN/NSU=";
-      })
+      #(pkgs.fetchpatch {
+        #url = "https://dwm.suckless.org/patches/center/dwm-center-6.2.diff";
+        #hash = "sha256-2uOVNtjR1c0eF5jbcUy51wgvBYHdPtUxZRWU4iz+zfs=";
+      #})
+      #(pkgs.fetchpatch {
+        #url = "https://raw.githubusercontent.com/bakkeby/patches/refs/heads/master/dwm/dwm-resizepoint-6.5.diff";
+        #hash = "sha256-vN97kH/o6Jck5TAvxu75hrgguP2AVgPSab2g0GwpUF0=";
+      #})
+      #(pkgs.fetchpatch {
+        #url = "https://dwm.suckless.org/patches/cool_autostart/dwm-cool-autostart-20240312-9f88553.diff";
+        #hash = "sha256-pgXbgoAAewCjZP16smKkTVh5p7P/FK+Rue0F6gjmGVo=";
+      #})
       #(pkgs.fetchpatch {
 	#url = "https://dwm.suckless.org/patches/anybar/dwm-anybar-polybar-tray-fix-20200810-bb2e722.diff";
-	#hash = "";
+	#hash = "sha256-hLqo9t45Pizb2/G+NDF+qXjqfy/20DIo5C1KrmISTq8=";
       #})
+      ../../user/dwm/ipc.patch
     ];
   };
   

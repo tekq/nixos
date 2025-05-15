@@ -47,6 +47,7 @@
     rofi
     maim
     xclip
+    polybar
 
     (slstatus.override {
       conf = ./dwm/slstatus.h;
