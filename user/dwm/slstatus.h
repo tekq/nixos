@@ -83,7 +83,7 @@ static const struct arg args[] = {
 	 { ram_perc,      " [ %s%%]",   NULL },
 	 // { battery_perc,  " [ %s%%",    "BAT0" },
 	 // { battery_state, "(%s)]",       "BAT0" },
-	 // { run_command,   " [  %s]",    vol },
+	 { run_command,   " [  %s]",    vol },
 	 // { run_command,   " [ %s]",     mic },
 	 { datetime,      " [ %s]",     "%F %T" }, /* Date time with this format: YYYY-MM-DD 18:00:00 */
 };

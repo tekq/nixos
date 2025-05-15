@@ -40,6 +40,7 @@
     prismlauncher
 
     neofetch
+    pavucontrol
 
     alacritty
     dunst
