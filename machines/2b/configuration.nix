@@ -45,6 +45,14 @@
     conf = ../../user/dwm/config.h;
     patches = [
       (pkgs.fetchpatch {
+	url = "https://dwm.suckless.org/patches/autoraise-windows/dwm-autoraise_windows-20240809-d2e6bd5b.diff";
+	hash = "sha256-+YwF1xVUA8i7HVoAwONJjmmGLQuqAWSuaGlqGSbA8XY=";
+      })
+      (pkgs.fetchpatch {
+	url = "https://dwm.suckless.org/patches/tagshift/dwm-tagshift-6.3.diff";
+	hash = "sha256-5QLIICFOpIzObnhmjwPkkzdq3h1Tmq0T53TjPNTkDfI=";
+      })
+      (pkgs.fetchpatch {
         url = "https://dwm.suckless.org/patches/center/dwm-center-6.2.diff";
         hash = "sha256-2uOVNtjR1c0eF5jbcUy51wgvBYHdPtUxZRWU4iz+zfs=";
       })
@@ -75,7 +83,6 @@
     enable = true;
     package = pkgs.gnomeExtensions.gsconnect;
   };
-
 
   services.xserver.xkb.layout = "us";
   services.xserver.xkb.variant = "dvorak";

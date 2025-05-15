@@ -10,6 +10,7 @@ static const int vertpad	= 7;
 static const int sidepad	= 15;
 static const int gappx		= 15;
 
+
 static const char *colors[][3] = {
        /* fg         bg         border   */
        [SchemeNorm] = { "#b3b3b3", "#1a1a1a", "#444444" }, // Text on unselected tags, background for unselected tags, border for unselected windows
@@ -57,7 +58,7 @@ static const int focusonwheel = 0;
 
 static char dmenumon[2] = "0";
 
-static const char *dmenucmd[] = { "rofi", "-show", "drun", NULL };
+static const char *dmenucmd[] = { "rofi", "-show", "drun", "-theme", "/etc/nixos/user/dwm/rofi/config.rasi", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
 static const Key keys[] = {
@@ -72,6 +73,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      	incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      	setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      	setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_Left,   shiftview,      {.i = -1 } },
+	{ MODKEY,                       XK_Right,  shiftview,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Left,   shifttag,       {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_Right,  shifttag,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Return, 	zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    	view,           {0} },
 	{ MODKEY,			XK_apostrophe,	killclient,     {0} },

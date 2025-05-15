@@ -8,8 +8,7 @@
 
   home.packages = with pkgs; [
     ungoogled-chromium
-    gnome-console
-    nautilus
+    nemo
     tidal-hifi
     unzip
     zip
@@ -35,7 +34,6 @@
     ripgrep
     sd
     tokei
-    bottom
 
     prismlauncher
 
@@ -46,6 +44,7 @@
     dunst
     nitrogen
     rofi
+    alsa-utils
     maim
     xclip
 
@@ -67,12 +66,12 @@
       name = "Inter";
     };
 
-    #iconTheme = {
-    #  #package = pkgs.morewaita-icon-theme;   
-    #  #name = "MoreWaita";
-    #  package = pkgs.fluent-icon-theme;
-    #  name = "Fluent-dark";
-    #};
+    iconTheme = {
+      #package = pkgs.kora-icon-theme;   
+      #name = "Kora";
+      package = pkgs.fluent-icon-theme;
+      name = "Fluent-dark";
+    };
   };
 
   qt.platformTheme = "gnome";
