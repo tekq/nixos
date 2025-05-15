@@ -64,6 +64,10 @@
 	url = "https://dwm.suckless.org/patches/barpadding/dwm-barpadding-20211020-a786211.diff";
 	hash = "sha256-0kUD9+5E3h8B8V+emP/EuNKUNRujseL5dzjjZTN/NSU=";
       })
+      (pkgs.fetchpatch {
+	url = "https://dwm.suckless.org/patches/fullgaps/dwm-fullgaps-6.4.diff";
+	hash = "sha256-+OXRqnlVeCP2Ihco+J7s5BQPpwFyRRf8lnVsN7rm+Cc=";
+      })
     ];
   };
   
