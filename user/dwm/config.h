@@ -8,6 +8,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "inter:size=12" };
 static const int vertpad	= 7;
 static const int sidepad	= 15;
+static const int gappx		= 15;
 
 static const char *colors[][3] = {
        /* fg         bg         border   */
