@@ -63,7 +63,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        	function        argument */
-	{ MODKEY,                       XK_space,  	spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_a,	  	spawn,          {.v = dmenucmd } },
 	{ MODKEY,             		XK_Return, 	spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_o,		spawn,		SHCMD("maim -os | xclip -selection clipboard -t image/png") },
 	{ MODKEY,                       XK_b,      	togglebar,      {0} },
