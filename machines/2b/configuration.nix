@@ -9,7 +9,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  boot.kernelPackages = pkgs.linuxPackages_6_14;
 
   # services.scx.enable = true;
 
@@ -22,14 +22,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   services.xserver.enable = true;
-
-  #services.xserver.displayManager.gdm.enable = true;
-  #services.xserver.desktopManager.gnome.enable = true;
-  #services.gnome.core-utilities.enable = false;
-
-  ## COSMIC
-  # services.desktopManager.cosmic.enable = true;
-  # services.displayManager.cosmic-greeter.enable = true;
 
   hardware.bluetooth.enable = true; 
   hardware.bluetooth.powerOnBoot = true; 
@@ -84,10 +76,6 @@
     package = pkgs.gnomeExtensions.gsconnect;
   };
 
-  services.xserver.xkb.layout = "us";
-  services.xserver.xkb.variant = "dvorak";
-  console.useXkbConfig = true;
-
   services.printing.enable = true;
 
   services.pipewire = {
@@ -110,7 +98,7 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hack" ]; })
+    nerd-fonts.hack
   ];
 
   # virtualisation.waydroid.enable = true;
@@ -128,6 +116,9 @@
   environment.systemPackages = [
     pkgs.vim
     pkgs.git
+    pkgs.yajl
+    pkgs.qmk-udev-rules
+    pkgs.qmk_hid
   ];
 
   environment.variables.EDITOR = "vim";

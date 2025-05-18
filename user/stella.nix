@@ -17,10 +17,11 @@
     galaxy-buds-client
     qbittorrent
     mpv
+    element-desktop
 
     # unityhub
     # jetbrains.rider
-    # jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
     devenv
     gh
     git-lfs
@@ -37,9 +38,16 @@
 
     prismlauncher
 
+    qmk
+    via
+    vial
+
     neofetch
     pavucontrol
 
+    htop
+
+    polybar
     alacritty
     dunst
     nitrogen

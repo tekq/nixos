@@ -10,7 +10,6 @@ static const int vertpad	= 7;
 static const int sidepad	= 15;
 static const int gappx		= 15;
 
-
 static const char *colors[][3] = {
        /* fg         bg         border   */
        [SchemeNorm] = { "#b3b3b3", "#1a1a1a", "#444444" }, // Text on unselected tags, background for unselected tags, border for unselected windows
@@ -44,7 +43,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
