@@ -11,7 +11,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_6_14;
 
-  # services.scx.enable = true;
+  services.scx.enable = true;
 
   networking.hostName = "2B";
   networking.networkmanager.enable = true;
@@ -30,6 +30,27 @@
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
+
+  services.xserver.displayManager.startx.enable = true;
+
+  nixpkgs.overlays = [ ( final: prev: { dwl = prev.dwl.overrideAttrs { patches = [ 
+    (pkgs.fetchpatch {
+	url = "https://codeberg.org/dwl/dwl-patches/raw/commit/0bd725d0786248e1dfedbe6aa7453edfe736de43/patches/relative-mouse-resize/relative-mouse-resize.patch";
+	hash = "sha256-tSp1CRpJof1dGWddr9vltbOSMsQBdw43zu2Q4iWQqsw=";
+    })
+    (pkgs.fetchpatch {
+	url = "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/alwayscenter/alwayscenter.patch";
+	hash = "sha256-JaM/YAXioRi16TRKLvDvHAsn4HQ9jpaBAhvHyp/r/+I=";
+    })
+    (pkgs.fetchpatch {
+	url = "https://codeberg.org/dwl/dwl-patches/raw/commit/d235f0f88ed069eca234da5a544fb1c6e19f1d33/patches/ipc/ipc.patch";
+	hash = "sha256-ULN1P31X70QbbtLgBw2WI4KgNIDOxHSAdRhSh5gr9bw=";
+    })
+    (pkgs.fetchpatch {
+	url = "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/autostart/autostart-0.7.patch";
+	hash = "sha256-aOPdNtf5sU8ZIV5Bum8LB9l9B6UTTxXStavPkWWdXrI=";
+    })
+  ]; }; }) ]; 
 
   ## DWM
   services.xserver.windowManager.dwm.enable = true;
@@ -119,6 +140,10 @@
     pkgs.yajl
     pkgs.qmk-udev-rules
     pkgs.qmk_hid
+
+    (pkgs.dwl.override {
+      configH = ../../user/dwl/config.h; 
+    })
   ];
 
   environment.variables.EDITOR = "vim";

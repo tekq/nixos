@@ -47,6 +47,7 @@
 
     htop
 
+    # dwm
     polybar
     alacritty
     dunst
@@ -59,6 +60,14 @@
     (slstatus.override {
       conf = ./dwm/slstatus.h;
     })
+
+    # dwl
+    grim
+    slurp
+    wofi
+    wmenu
+    waybar
+    wbg
   ];
 
   gtk = {
@@ -127,6 +136,10 @@
 
     initExtra = ''
     	eval "$(starship init zsh)"
+	if [[ -z "$DISPLAY" && "$TTY" == "/dev/tty1" ]]
+	then
+    		exec dwl
+	fi
     '';
   };
 
