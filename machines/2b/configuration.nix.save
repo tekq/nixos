@@ -23,10 +23,6 @@
 
   services.xserver.enable = true;
 
-  # services.desktopManager.cosmic.enable = true;
-  # services.displayManager.cosmic-greeter.enable = true;
-
-
   hardware.bluetooth.enable = true; 
   hardware.bluetooth.powerOnBoot = true; 
   services.blueman.enable = true;
@@ -34,7 +30,6 @@
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
-  xdg.portal.wlr.enable = true;
 
   services.xserver.displayManager.startx.enable = true;
 
@@ -58,6 +53,10 @@
             url = "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/autostart/autostart-0.7.patch";
             hash = "sha256-aOPdNtf5sU8ZIV5Bum8LB9l9B6UTTxXStavPkWWdXrI=";
           })
+          # (pkgs.fetchpatch {
+            # url = "https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/scenefx/scenefx.patch";
+            # hash = "sha256-3iXxAsAA44D5ki6VN7OXeqsRrzKMLPN9xl7LkVzQicg=";
+          # })
         ];
       };
     })
@@ -67,8 +66,8 @@
   services.xserver.windowManager.dwm.enable = true;
   services.xserver.windowManager.dwm.package = pkgs.dwm.override {
     conf = ../../user/dwm/config.h;
-
-    patches = [ (pkgs.fetchpatch {
+    patches = [
+      (pkgs.fetchpatch {
 	url = "https://dwm.suckless.org/patches/autoraise-windows/dwm-autoraise_windows-20240809-d2e6bd5b.diff";
 	hash = "sha256-+YwF1xVUA8i7HVoAwONJjmmGLQuqAWSuaGlqGSbA8XY=";
       })
@@ -95,6 +94,10 @@
       (pkgs.fetchpatch {
 	url = "https://dwm.suckless.org/patches/barpadding/dwm-barpadding-20211020-a786211.diff";
 	hash = "sha256-0kUD9+5E3h8B8V+emP/EuNKUNRujseL5dzjjZTN/NSU=";
+      })
+      (pkgs.fetchpatch {
+	url = "https://dwm.suckless.org/patches/fullgaps/dwm-fullgaps-6.4.diff";
+	hash = "sha256-+OXRqnlVeCP2Ihco+J7s5BQPpwFyRRf8lnVsN7rm+Cc=";
       })
     ];
   };
@@ -141,12 +144,7 @@
   sops.age.generateKey = true;
   sops.secrets.stella-password.neededForUsers = true;
 
-  services.udev.packages = [ pkgs.via ];
-
   environment.systemPackages = [
-    pkgs.wineWowPackages.staging
-    pkgs.winetricks
-    pkgs.wineWowPackages.waylandFull
     pkgs.vim
     pkgs.git
     pkgs.yajl

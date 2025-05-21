@@ -121,13 +121,20 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* commands */
 static const char *termcmd[] = { "alacritty", NULL };
 static const char *menucmd[] = { "wofi", "--show", "drun", NULL };
+static const char *volumeup[] = { "amixer", "sset", "Master", "5%+", NULL };
+static const char *volumedown[] = { "amixer", "sset", "Master", "5%-", NULL };
+static const char *volumemute[] = { "amixer", "sset", "Master", "0", NULL };
+static const char *screenshot[] = { "sh", "-c", "slurp | grim -g - $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
 	{ MODKEY,                    XKB_KEY_a,          spawn,          {.v = menucmd} },
 	{ MODKEY,		     XKB_KEY_Return,     spawn,          {.v = termcmd} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_o,		 spawn,		 SHCMD("slurp | grim -g - $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')") },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_o,		 spawn,		 {.v = screenshot} },
+	{ 0,			     XKB_KEY_XF86AudioRaiseVolume, spawn, {.v = volumeup} },
+        { 0,                         XKB_KEY_XF86AudioLowerVolume, spawn, {.v = volumedown} },
+        { 0,                         XKB_KEY_XF86AudioMute, 	   spawn, {.v = volumemute} },
 	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_k,          focusstack,     {.i = -1} },
 	{ MODKEY,                    XKB_KEY_i,          incnmaster,     {.i = +1} },

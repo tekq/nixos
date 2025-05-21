@@ -18,6 +18,9 @@
     qbittorrent
     mpv
     element-desktop
+    bubblewrap
+    fuse-overlayfs
+    dwarfs
 
     # unityhub
     # jetbrains.rider
@@ -37,6 +40,7 @@
     tokei
 
     prismlauncher
+    rpcs3
 
     qmk
     via
@@ -65,7 +69,7 @@
     grim
     slurp
     wofi
-    wmenu
+    wlr-randr
     waybar
     wbg
   ];
