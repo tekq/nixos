@@ -50,50 +50,7 @@
     pavucontrol
 
     htop
-
-    # dwm
-    polybar
-    alacritty
-    dunst
-    nitrogen
-    rofi
-    alsa-utils
-    maim
-    xclip
-
-    (slstatus.override {
-      conf = ./dwm/slstatus.h;
-    })
-
-    # dwl
-    grim
-    slurp
-    wofi
-    wlr-randr
-    waybar
-    wbg
   ];
-
-  gtk = {
-    enable = true;
-    
-    theme = { 
-      package = pkgs.adw-gtk3;
-      name = "adw-gtk3-dark";
-    };
-
-    font = {
-      package = pkgs.inter;
-      name = "Inter";
-    };
-
-    iconTheme = {
-      #package = pkgs.kora-icon-theme;   
-      #name = "Kora";
-      package = pkgs.fluent-icon-theme;
-      name = "Fluent-dark";
-    };
-  };
 
   qt.platformTheme = "gnome";
 
@@ -140,10 +97,6 @@
 
     initExtra = ''
     	eval "$(starship init zsh)"
-	if [[ -z "$DISPLAY" && "$TTY" == "/dev/tty1" ]]
-	then
-    		exec dwl
-	fi
     '';
   };
 
@@ -152,5 +105,5 @@
     lfs.enable = true;
   };
 
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 }

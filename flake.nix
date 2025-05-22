@@ -15,6 +15,7 @@
     nixcord.url = "github:kaylorben/nixcord";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     impermanence.url = "github:nix-community/impermanence";
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -27,8 +28,6 @@
         ./machines/2b/impermanence.nix
 	./machines/2b/nh.nix
         ./virt/podman.nix
-
-	./user/dwm/picom.nix
 
         ./networking/tailscale.nix
 
@@ -46,12 +45,20 @@
         inputs.chaotic.nixosModules.nyx-registry
 	inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
+	inputs.nixos-cosmic.nixosModules.default
 
         { 
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.stella = import ./user/stella.nix;
           home-manager.sharedModules = [ inputs.nixcord.homeModules.nixcord ];
+        }
+
+        {
+          nix.settings = {
+            substituters = [ "https://cosmic.cachix.org/" ];
+            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+          };
         }
       ];
     };
