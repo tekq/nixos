@@ -46,13 +46,8 @@
     via
     vial
 
-    neofetch
-    pavucontrol
-
     htop
   ];
-
-  qt.platformTheme = "gnome";
 
   programs.nixcord = {
     enable = true;
@@ -95,7 +90,7 @@
 	plugins = [ "git" "systemd" "z" ];
     };
 
-    initExtra = ''
+    initContent = ''
     	eval "$(starship init zsh)"
     '';
   };

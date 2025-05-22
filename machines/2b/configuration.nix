@@ -21,15 +21,8 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.xserver.enable = true;
-
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
-  
-  programs.kdeconnect = {
-    enable = true;
-    package = pkgs.gnomeExtensions.gsconnect;
-  };
 
   services.printing.enable = true;
 
@@ -76,7 +69,6 @@
     pkgs.wineWowPackages.waylandFull
     pkgs.vim
     pkgs.git
-    pkgs.yajl
     pkgs.qmk-udev-rules
     pkgs.qmk_hid
   ];
