@@ -84,6 +84,7 @@
       system = "x86_64-linux";
       modules = [
         ./machines/15o/configuration.nix
+	./mgmt/nh.nix
       ];
     };
     
@@ -91,6 +92,7 @@
       system = "x86_64-linux";
       modules = [
         ./machines/6o/configuration.nix
+	./mgmt/nh.nix
       ];
     };     
   };
