@@ -8,10 +8,11 @@
       "/etc/NetworkManager/system-connections"
       "/etc/nixos"
       "/etc/secureboot"
+      "/var/lib/tailscale"
     ];
 
     files = [
-      "/var/lib/tailscale/tailscaled.state"
+
     ];
   };
 }
