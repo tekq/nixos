@@ -2,7 +2,9 @@
   description = "Config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs_unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs_latest.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs_latest-small = "github:NixOS/nixpkgs/nixos-25.05-small";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +21,7 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations."2B" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."2B" = nixpkgs_unstable.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ 
 	./common/all.nix
@@ -60,7 +62,7 @@
       ];
     };
 
-    nixosConfigurations."9S" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."9S" = nixpkgs_latest.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
 	./common/all.nix
@@ -81,7 +83,7 @@
       ];
     };
 
-    nixosConfigurations."15O" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."15O" = nixpkgs_latest-small.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
 	./common/all.nix
@@ -110,7 +112,7 @@
       ];
     };
     
-    nixosConfigurations."6O" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."6O" = nixpkgs_latest-small.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
 	./common/all.nix
