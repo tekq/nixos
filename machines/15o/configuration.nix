@@ -38,7 +38,7 @@
     ports = [ 22 ];
     settings = {
       PasswordAuthentication = false;
-      AllowUsers = "stella";
+      AllowUsers = [ "stella" ];
       UseDns = true;
       X11Forwarding = false;
       PermitRootLogin = "no";
