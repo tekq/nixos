@@ -20,7 +20,7 @@
     # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs_unstable, nixpkgs_latest, nixpkgs_latest-small, ... }@inputs: {
     nixosConfigurations."2B" = nixpkgs_unstable.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ 
