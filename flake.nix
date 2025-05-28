@@ -91,6 +91,9 @@
 	./virt/podman.nix
 
         ./machines/15o/configuration.nix
+
+	inputs.sops-nix.nixosModules.sops
+
 	{
           system.autoUpgrade = {
             enable = true;
@@ -115,7 +118,10 @@
 	./user/common.nix
 
         ./machines/6o/configuration.nix
-        {
+        
+	inputs.sops-nix.nixosModules.sops
+
+	{
           system.autoUpgrade = {
             enable = true;
             flake = inputs.self.outPath;
