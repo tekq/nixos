@@ -7,9 +7,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    # ungoogled-chromium
     firefox-esr
-    nemo
     tidal-hifi
     unzip
     zip
