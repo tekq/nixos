@@ -2,11 +2,10 @@
   description = "Config";
 
   inputs = {
-    nixpkgs_unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs_latest.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs_latest-small.url = "github:NixOS/nixpkgs/nixos-25.05-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-25.05-small";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote = {
@@ -20,8 +19,8 @@
     # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
-  outputs = { self, nixpkgs_unstable, nixpkgs_latest, nixpkgs_latest-small, ... }@inputs: {
-    nixosConfigurations."2B" = nixpkgs_unstable.lib.nixosSystem {
+  outputs = { self, nixpkgs, nixpkgs-small, ... }@inputs: {
+    nixosConfigurations."2B" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ 
 	./common/all.nix
@@ -53,7 +52,7 @@
         inputs.lanzaboote.nixosModules.lanzaboote
 	# inputs.nixos-cosmic.nixosModules.default
 
-        { 
+        {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.stella = import ./user/stella.nix;
@@ -62,7 +61,7 @@
       ];
     };
 
-    nixosConfigurations."9S" = nixpkgs_latest.lib.nixosSystem {
+    nixosConfigurations."9S" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
 	./common/all.nix
@@ -83,7 +82,7 @@
       ];
     };
 
-    nixosConfigurations."15O" = nixpkgs_latest-small.lib.nixosSystem {
+    nixosConfigurations."15O" = nixpkgs-small.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
 	./common/all.nix
@@ -112,7 +111,7 @@
       ];
     };
     
-    nixosConfigurations."6O" = nixpkgs_latest-small.lib.nixosSystem {
+    nixosConfigurations."6O" = nixpkgs-small.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
 	./common/all.nix
