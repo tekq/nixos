@@ -118,6 +118,8 @@
 
 	./user/common.nix
 
+	./virt/podman.nix
+
         ./machines/6o/configuration.nix
         
 	inputs.sops-nix.nixosModules.sops
