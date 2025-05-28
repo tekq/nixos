@@ -10,7 +10,7 @@
     modesetting.enable = true;
 
     powerManagement = {
-      enable = false;
+      enable = true;
       finegrained = false;
     };
 
@@ -27,5 +27,9 @@
       #settingsSha256 = "sha256-6n9mVkEL39wJj5FB1HBml7TTJhNAhS/j5hqpNGFQE4w=";
       #persistencedSha256 = lib.fakeSha256;
     #};
-  }; 
+  };
+
+  boot.kernelParams = [
+    "mem_sleep_default=deep"
+  ];
 }

@@ -22,7 +22,6 @@
     bubblewrap
     fuse-overlayfs
     dwarfs
-    easyeffects
 
     # unityhub
     # jetbrains.rider
@@ -98,6 +97,8 @@
     	eval "$(starship init zsh)"
     '';
   };
+
+
 
   programs.git = {
     enable = true;

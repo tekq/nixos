@@ -12,7 +12,7 @@
     ];
 
     files = [
-
+      "/nix/persist/var/lib/sops-nix/keys.txt"
     ];
   };
 }

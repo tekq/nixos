@@ -15,18 +15,22 @@
     nixcord.url = "github:kaylorben/nixcord";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     impermanence.url = "github:nix-community/impermanence";
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations."2B" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ 
+	./common/all.nix
+
         ./machines/2b/configuration.nix
         ./machines/2b/nvidia.nix
 	./machines/2b/gaming.nix
         ./machines/2b/impermanence.nix
-	./mgmt/nh.nix
+
+	./user/common.nix
+
         ./virt/podman.nix
 
         ./networking/tailscale.nix
@@ -45,7 +49,7 @@
         inputs.chaotic.nixosModules.nyx-registry
 	inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
-	inputs.nixos-cosmic.nixosModules.default
+	# inputs.nixos-cosmic.nixosModules.default
 
         { 
           home-manager.useGlobalPkgs = true;
@@ -53,19 +57,14 @@
           home-manager.users.stella = import ./user/stella.nix;
           home-manager.sharedModules = [ inputs.nixcord.homeModules.nixcord ];
         }
-
-        {
-          nix.settings = {
-            substituters = [ "https://cosmic.cachix.org/" ];
-            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-          };
-        }
       ];
     };
 
     nixosConfigurations."9S" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+	./common/all.nix
+
         ./machines/9s/configuration.nix
 
 	inputs.sops-nix.nixosModules.sops
@@ -83,17 +82,47 @@
     nixosConfigurations."15O" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+	./common/all.nix
+
+	./virt/podman.nix
+
         ./machines/15o/configuration.nix
-	./mgmt/nh.nix
+	{
+          system.autoUpgrade = {
+            enable = true;
+            flake = inputs.self.outPath;
+            flags = [
+              "--update-input"
+              "nixpkgs"
+              "-L" # print build logs
+            ];
+            dates = "10:00";
+            randomizedDelaySec = "45min";
+          };
+      	}
       ];
     };
     
     nixosConfigurations."6O" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+	./common/all.nix
+
         ./machines/6o/configuration.nix
-	./mgmt/nh.nix
+        {
+          system.autoUpgrade = {
+            enable = true;
+            flake = inputs.self.outPath;
+            flags = [
+              "--update-input"
+              "nixpkgs"
+              "-L" # print build logs
+            ];
+            dates = "2:00";
+            randomizedDelaySec = "45min";
+          };
+        }
       ];
-    };     
+    };
   };
 }

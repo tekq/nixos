@@ -31,19 +31,8 @@
     pulse.enable = true;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.trusted-users = [ "@wheel" ];
   nixpkgs.config.allowUnfree = true;
-
-  programs.zsh.enable = true;
-
-  users.users.stella = {
-    description = "Assembly";
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    shell = pkgs.zsh;
-    hashedPasswordFile = config.sops.secrets.stella-password.path;
-  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.hack
@@ -56,22 +45,36 @@
 
   services.hardware.openrgb.enable = true;
 
-  sops.defaultSopsFile = ../../secrets/secrets.yaml;
-  sops.age.keyFile = "/persist/var/lib/sops-nix/keys.txt";
-  sops.age.generateKey = true;
-  sops.secrets.stella-password.neededForUsers = true;
-
   services.udev.packages = [ pkgs.via ];
 
+  systemd.services.disable-rgb = {
+    script = "
+      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x61 0x08 0x53
+      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x61 0x09 0x00
+      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x61 0x20 0x0
+      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x61 0x08 0x44
+      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x63 0x08 0x53
+      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x63 0x09 0x00
+      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x63 0x20 0x0
+      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x63 0x08 0x44
+    ";
+
+    serviceConfig = {
+      Type = "oneshot";
+    };
+
+    wantedBy = [ "graphical.target" ];
+  };
+
   environment.systemPackages = [
-    pkgs.wineWowPackages.staging
-    pkgs.winetricks
-    pkgs.wineWowPackages.waylandFull
     pkgs.vim
     pkgs.git
     pkgs.qmk-udev-rules
     pkgs.qmk_hid
+    pkgs.i2c-tools
   ];
+
+  boot.blacklistedKernelModules = [ "spd5118" ];
 
   environment.variables.EDITOR = "vim";
 
