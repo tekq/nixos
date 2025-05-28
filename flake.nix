@@ -65,6 +65,8 @@
       modules = [
 	./common/all.nix
 
+	./user/common.nix
+
         ./machines/9s/configuration.nix
 
 	inputs.sops-nix.nixosModules.sops
@@ -83,6 +85,8 @@
       system = "x86_64-linux";
       modules = [
 	./common/all.nix
+
+	./user/common.nix
 
 	./virt/podman.nix
 
@@ -107,6 +111,8 @@
       system = "x86_64-linux";
       modules = [
 	./common/all.nix
+
+	./user/common.nix
 
         ./machines/6o/configuration.nix
         {
