@@ -21,6 +21,7 @@
     fuse-overlayfs
     dwarfs
     easyeffects
+    eog
 
     # unityhub
     # jetbrains.rider
@@ -43,7 +44,6 @@
     rpcs3
 
     qmk
-    via
     vial
 
     i2c-tools
