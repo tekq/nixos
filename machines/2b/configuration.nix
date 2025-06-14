@@ -9,17 +9,35 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # services.scx.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_6_14;
-
-  services.scx.enable = true;
 
   networking.hostName = "2B";
   networking.networkmanager.enable = true;
   networking.hostId = "cc81040a";
 
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      input = {
+        General = {
+	  UserspaceHID = true;
+	};
+      };
+      settings = {
+	General = {
+	  MaxConnections = 10;
+	};
+      };
+    };
+  };
+
   time.timeZone = "Europe/Bucharest";
 
   i18n.defaultLocale = "en_US.UTF-8";
+
+  # services.xserver.desktopManager.gnome.enable = true;
 
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;

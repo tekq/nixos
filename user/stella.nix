@@ -8,7 +8,7 @@
 
   home.packages = with pkgs; [
     firefox-esr
-    tidal-hifi
+    # tidal-hifi
     unzip
     zip
     vim

@@ -17,6 +17,7 @@
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     impermanence.url = "github:nix-community/impermanence";
     # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    tidaLuna.url = "github:Inrixia/TidaLuna";
   };
 
   outputs = { self, nixpkgs, nixpkgs-small, ... }@inputs: {
@@ -50,13 +51,16 @@
         inputs.chaotic.nixosModules.nyx-registry
 	inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
-	# inputs.nixos-cosmic.nixosModules.default
 
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.stella = import ./user/stella.nix;
           home-manager.sharedModules = [ inputs.nixcord.homeModules.nixcord ];
+
+          environment.systemPackages = [
+            inputs.tidaLuna.packages."x86_64-linux".default
+          ];
         }
       ];
     };
