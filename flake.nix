@@ -33,7 +33,7 @@
 
 	./user/common.nix
 
-        ./virt/podman.nix
+        ./virt/all.nix
 
         ./networking/tailscale.nix
 

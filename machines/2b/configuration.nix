@@ -37,8 +37,6 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # services.xserver.desktopManager.gnome.enable = true;
-
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
   services.geoclue2.enable = true;
@@ -91,6 +89,8 @@
     pkgs.qmk-udev-rules
     pkgs.qmk_hid
     pkgs.i2c-tools
+
+    pkgs.wineWowPackages.waylandFull
   ];
 
   boot.blacklistedKernelModules = [ "spd5118" ];
