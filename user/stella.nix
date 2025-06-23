@@ -8,10 +8,10 @@
 
   home.packages = with pkgs; [
     firefox-esr
-    # tidal-hifi
     unzip
     zip
     vim
+    tidal-hifi
     tutanota-desktop
     galaxy-buds-client
     qbittorrent
@@ -19,12 +19,11 @@
     element-desktop
     bubblewrap
     fuse-overlayfs
-    dwarfs
     easyeffects
     eog
 
-    # unityhub
-    # jetbrains.rider
+    unityhub
+    jetbrains.rider
     jetbrains.idea-ultimate
     devenv
     gh
@@ -46,21 +45,27 @@
     qmk
     vial
 
-    i2c-tools
-
     htop
   ];
 
   programs.nixcord = {
     enable = true;
-    discord.enable = true;
-    vesktop.enable = false;
-    config = {
-      themeLinks = [ "https://milbits.github.io/oldcord/src/main.css" ];
-      plugins = {
-        noProfileThemes.enable = true;
-        silentTyping.enable = true;
-      };
+    discord.enable = false;
+    dorion.enable = true;
+    dorion = {
+      theme = "dark";
+      zoom = "1.0";
+      blur = "none";       # "none", "blur", or "acrylic"
+      sysTray = true;
+      openOnStartup = true;
+      autoClearCache = true;
+      disableHardwareAccel = false;
+      rpcServer = true;
+      rpcProcessScanner = true;
+      pushToTalk = true;
+      pushToTalkKeys = ["RControl"];
+      desktopNotifications = true;
+      unreadBadge = true;
     };
   };
 

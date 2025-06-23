@@ -6,10 +6,23 @@
       ./hardware-configuration.nix
     ];
 
+  # Use system-wide overlays to override linux-firmware
+  nixpkgs.overlays = [
+    (final: prev: {
+      linux-firmware = prev.linux-firmware.overrideAttrs (old: rec {
+        version = "20250509";
+        src = prev.fetchzip {
+          url = "https://cdn.kernel.org/pub/linux/kernel/firmware/linux-firmware-${version}.tar.xz";
+          hash = "sha256-0FrhgJQyCeRCa3s0vu8UOoN0ZgVCahTQsSH0o6G6hhY=";
+        };
+      });
+    })
+  ];
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # services.scx.enable = true;
+  services.scx.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_6_14;
 
   networking.hostName = "2B";
@@ -39,7 +52,6 @@
 
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
-  services.geoclue2.enable = true;
 
   services.printing.enable = true;
 

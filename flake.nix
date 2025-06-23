@@ -2,7 +2,7 @@
   description = "Config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-25.05-small";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -12,12 +12,12 @@
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     sops-nix.url = "github:Mic92/sops-nix";
     nixcord.url = "github:kaylorben/nixcord";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     impermanence.url = "github:nix-community/impermanence";
     # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
-    tidaLuna.url = "github:Inrixia/TidaLuna";
   };
 
   outputs = { self, nixpkgs, nixpkgs-small, ... }@inputs: {
@@ -52,15 +52,13 @@
 	inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
 
+	inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
+
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.stella = import ./user/stella.nix;
           home-manager.sharedModules = [ inputs.nixcord.homeModules.nixcord ];
-
-          environment.systemPackages = [
-            inputs.tidaLuna.packages."x86_64-linux".default
-          ];
         }
       ];
     };

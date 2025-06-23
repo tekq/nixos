@@ -66,6 +66,12 @@
       options = [ "bind" ];
     };
 
+    fileSystems."/home/stella/containers" =
+    { device = "/nix/persist/home/stella/containers";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
