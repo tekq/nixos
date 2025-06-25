@@ -18,7 +18,8 @@
     
     nvidiaSettings = true;
 
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    # package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
     # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
       #version = "575.57.08";
       #sha256_64bit = "sha256-KqcB2sGAp7IKbleMzNkB3tjUTlfWBYDwj50o3R//xvI=";

@@ -6,24 +6,13 @@
       ./hardware-configuration.nix
     ];
 
-  # Use system-wide overlays to override linux-firmware
-  nixpkgs.overlays = [
-    (final: prev: {
-      linux-firmware = prev.linux-firmware.overrideAttrs (old: rec {
-        version = "20250509";
-        src = prev.fetchzip {
-          url = "https://cdn.kernel.org/pub/linux/kernel/firmware/linux-firmware-${version}.tar.xz";
-          hash = "sha256-0FrhgJQyCeRCa3s0vu8UOoN0ZgVCahTQsSH0o6G6hhY=";
-        };
-      });
-    })
-  ];
-
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.consoleMode = "max";
+  # boot.loader.timeout = 0;
   boot.loader.efi.canTouchEfiVariables = true;
 
   services.scx.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_6_14;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "2B";
   networking.networkmanager.enable = true;
@@ -75,25 +64,6 @@
   services.hardware.openrgb.enable = true;
 
   services.udev.packages = [ pkgs.via ];
-
-  systemd.services.disable-rgb = {
-    script = "
-      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x61 0x08 0x53
-      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x61 0x09 0x00
-      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x61 0x20 0x0
-      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x61 0x08 0x44
-      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x63 0x08 0x53
-      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x63 0x09 0x00
-      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x63 0x20 0x0
-      ${pkgs.i2c-tools}/bin/i2cset -y 1 0x63 0x08 0x44
-    ";
-
-    serviceConfig = {
-      Type = "oneshot";
-    };
-
-    wantedBy = [ "graphical.target" ];
-  };
 
   environment.systemPackages = [
     pkgs.vim

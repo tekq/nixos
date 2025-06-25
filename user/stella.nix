@@ -22,7 +22,7 @@
     easyeffects
     eog
 
-    unityhub
+    # unityhub
     jetbrains.rider
     jetbrains.idea-ultimate
     devenv
@@ -50,22 +50,14 @@
 
   programs.nixcord = {
     enable = true;
-    discord.enable = false;
-    dorion.enable = true;
-    dorion = {
-      theme = "dark";
-      zoom = "1.0";
-      blur = "none";       # "none", "blur", or "acrylic"
-      sysTray = true;
-      openOnStartup = true;
-      autoClearCache = true;
-      disableHardwareAccel = false;
-      rpcServer = true;
-      rpcProcessScanner = true;
-      pushToTalk = true;
-      pushToTalkKeys = ["RControl"];
-      desktopNotifications = true;
-      unreadBadge = true;
+    discord.enable = true;
+    vesktop.enable = false;
+    config = {
+      themeLinks = [ "https://milbits.github.io/oldcord/src/main.css" ];
+      plugins = {
+        noProfileThemes.enable = true;
+        silentTyping.enable = true;
+      };
     };
   };
 

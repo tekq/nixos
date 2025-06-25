@@ -2,7 +2,7 @@
   description = "Config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-25.05-small";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -17,7 +17,7 @@
     nixcord.url = "github:kaylorben/nixcord";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     impermanence.url = "github:nix-community/impermanence";
-    # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs = { self, nixpkgs, nixpkgs-small, ... }@inputs: {
@@ -51,10 +51,16 @@
         inputs.chaotic.nixosModules.nyx-registry
 	inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
+	inputs.nixos-cosmic.nixosModules.default
 
 	inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
 
         {
+          nix.settings = {
+            substituters = [ "https://cosmic.cachix.org/" ];
+            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+          };
+
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.stella = import ./user/stella.nix;

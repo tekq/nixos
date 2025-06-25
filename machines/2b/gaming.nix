@@ -15,6 +15,11 @@
 
   hardware.xpadneo.enable = true;
 
+  # fix for xpadneo
+  environment.sessionVariables = {
+    SDL_JOYSTICK_HIDAPI = "0";
+  };
+
   services.sunshine = {
     enable = true;
     autoStart = true;
