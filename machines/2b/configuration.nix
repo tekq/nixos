@@ -12,7 +12,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   services.scx.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "2B";
   networking.networkmanager.enable = true;
@@ -55,8 +54,6 @@
   fonts.packages = with pkgs; [
     nerd-fonts.hack
   ];
-
-  # virtualisation.waydroid.enable = true;
 
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;

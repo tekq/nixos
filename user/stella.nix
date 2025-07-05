@@ -46,12 +46,14 @@
     vial
 
     htop
+
+    discord
   ];
 
   programs.nixcord = {
-    enable = true;
-    discord.enable = true;
-    vesktop.enable = false;
+    enable = false;
+    discord.enable = false;
+    vesktop.enable = true;
     config = {
       themeLinks = [ "https://milbits.github.io/oldcord/src/main.css" ];
       plugins = {
