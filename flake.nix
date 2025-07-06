@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-25.05-small";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote = {
@@ -17,6 +17,10 @@
     nixcord.url = "github:kaylorben/nixcord";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     impermanence.url = "github:nix-community/impermanence";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-small, ... }@inputs: {
@@ -57,7 +61,11 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.stella = import ./user/stella.nix;
-          home-manager.sharedModules = [ inputs.nixcord.homeModules.nixcord ];
+          home-manager.sharedModules = [
+		inputs.nixcord.homeModules.nixcord
+		inputs.zen-browser.homeModules.twilight
+	  ];
+          home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux";};
         }
       ];
     };

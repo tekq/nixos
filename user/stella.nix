@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ...}:
+{ config, pkgs, lib, inputs, ...}:
 
 {
   home.username = "stella";
@@ -12,7 +12,6 @@
     zip
     vim
     tidal-hifi
-    tutanota-desktop
     galaxy-buds-client
     qbittorrent
     mpv
@@ -22,7 +21,7 @@
     easyeffects
     eog
 
-    # unityhub
+    unityhub
     jetbrains.rider
     jetbrains.idea-ultimate
     devenv
@@ -46,14 +45,14 @@
     vial
 
     htop
-
-    discord
   ];
 
+  programs.zen-browser.enable = true;
+
   programs.nixcord = {
-    enable = false;
-    discord.enable = false;
-    vesktop.enable = true;
+    enable = true;
+    discord.enable = true;
+    vesktop.enable = false;
     config = {
       themeLinks = [ "https://milbits.github.io/oldcord/src/main.css" ];
       plugins = {
