@@ -7,6 +7,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    firefox-esr
     unzip
     zip
     vim
@@ -46,28 +47,7 @@
     htop
   ];
 
-  programs.zen-browser = {
-    enable = true;
-
-    policies = {
-      AutofillAddressEnabled = false;
-      AutofillCreditCardEnabled = false;
-      DisableAppUpdate = true;
-      DisableFeedbackCommands = true;
-      DisableFirefoxStudies = true;
-      DisablePocket = true;
-      DisableTelemetry = true;
-      DontCheckDefaultBrowser = true;
-      NoDefaultBookmarks = true;
-      OfferToSaveLogins = false;
-      EnableTrackingProtection = {
-        Value = true;
-        Locked = true;
-        Cryptomining = true;
-        Fingerprinting = true;
-      };
-    };
-  };
+  programs.zen-browser.enable = true;
 
   programs.nixcord = {
     enable = true;
@@ -98,11 +78,6 @@
 	find = "fd";
 	ps = "procs";
 	"sed" = "sd";
-	ne = "nix-env";
-	ni = "nix-env -iA";
-	nu = "nix-env --uninstall";
-	ns = "nix-shell --pure";
-	nsp = "nix-shell -p";
     };
 
     oh-my-zsh = {
