@@ -106,6 +106,7 @@
 	nu = "nix-env --uninstall";
 	ns = "nix-shell --pure";
 	nsp = "nix-shell -p";
+	fhs = "steam-run bash";
     };
 
     oh-my-zsh = {
