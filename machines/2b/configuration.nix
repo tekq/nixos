@@ -38,11 +38,32 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
+  ## COSMIC
+  # services.desktopManager.cosmic.enable = true;
+  # services.displayManager.cosmic-greeter.enable = true;
 
-  services.geoclue2.enable = true;
-  services.geoclue2.enableDemoAgent = false;
+  # services.geoclue2.enable = true;
+  # services.geoclue2.enableDemoAgent = false;
+
+  ## KDE
+  services = {
+    desktopManager.plasma6.enable = true;
+
+    displayManager.defaultSession = "plasma" ;
+
+    displayManager.sddm.enable = true;
+
+    displayManager.sddm.wayland.enable = true;
+  };
+
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    oxygen
+    elisa
+  ];
+
+  boot.kernelParams = [ "nvidia.NVreg_EnableGpuFirmware=0" ];
+
+  programs.dconf.enable = true;
 
   services.printing.enable = true;
 

@@ -14,4 +14,6 @@
 
     groups.libvirtd.members = [ "stella" ];
   };
+
+  xdg.autostart.enable = true;
 }
