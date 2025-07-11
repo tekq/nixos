@@ -74,8 +74,8 @@
 
   programs.nixcord = {
     enable = true;
-    discord.enable = false;
-    vesktop.enable = true;
+    discord.enable = true;
+    vesktop.enable = false;
     config = {
       themeLinks = [ "https://milbits.github.io/oldcord/src/main.css" ];
       plugins = {
