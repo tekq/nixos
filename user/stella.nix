@@ -75,27 +75,13 @@
   programs.nixcord = {
     enable = true;
     discord.enable = false;
-    dorion.enable = true;
+    vesktop.enable = true;
     config = {
       themeLinks = [ "https://milbits.github.io/oldcord/src/main.css" ];
       plugins = {
         noProfileThemes.enable = true;
         silentTyping.enable = true;
       };
-    };
-
-    dorion = {
-      clientMods = [ "Vencord" ];
-      useNativeTitlebar = true;
-      sysTray = true;
-      cacheCss = true;
-      openOnStartup = false;
-      autoClearCache = true;
-      disableHardwareAccel = false;
-      rpcServer = false;
-      rpcProcessScanner = false;
-      desktopNotifications = true;
-      unreadBadge = true;
     };
   };
 
