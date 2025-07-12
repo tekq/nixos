@@ -16,8 +16,6 @@
     qbittorrent
     mpv
     element-desktop
-    bubblewrap
-    fuse-overlayfs
     easyeffects
     eog
 
@@ -101,11 +99,6 @@
 	find = "fd";
 	ps = "procs";
 	"sed" = "sd";
-	ne = "nix-env";
-	ni = "nix-env -iA";
-	nu = "nix-env --uninstall";
-	ns = "nix-shell --pure";
-	nsp = "nix-shell -p";
 	fhs = "steam-run bash";
     };
 

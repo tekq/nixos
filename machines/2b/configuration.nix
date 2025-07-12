@@ -17,30 +17,11 @@
     efi.canTouchEfiVariables = true;
   };
 
-  boot.plymouth.enable = true;
-
   services.scx.enable = true;
 
   networking.hostName = "2B";
   networking.networkmanager.enable = true;
   networking.hostId = "cc81040a";
-
-  hardware = {
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-      input = {
-        General = {
-	  UserspaceHID = true;
-	};
-      };
-      settings = {
-	General = {
-	  MaxConnections = 10;
-	};
-      };
-    };
-  };
 
   time.timeZone = "Europe/Bucharest";
 
