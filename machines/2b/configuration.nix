@@ -6,10 +6,18 @@
       ./hardware-configuration.nix
     ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.consoleMode = "max";
-  # boot.loader.timeout = 0;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot = {
+      enable = true;
+      consoleMode = "max";
+    };
+
+    # timeout = 0;
+
+    efi.canTouchEfiVariables = true;
+  };
+
+  boot.plymouth.enable = true;
 
   services.scx.enable = true;
 
@@ -38,14 +46,6 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  ## COSMIC
-  # services.desktopManager.cosmic.enable = true;
-  # services.displayManager.cosmic-greeter.enable = true;
-
-  # services.geoclue2.enable = true;
-  # services.geoclue2.enableDemoAgent = false;
-
-  ## KDE
   services = {
     desktopManager.plasma6.enable = true;
 
@@ -81,6 +81,8 @@
 
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
+
+  zramSwap.enable = true;
 
   services.hardware.openrgb.enable = true;
 
