@@ -20,8 +20,8 @@
     eog
 
     godotPackages_4_3.godot
-    jetbrains.rider
-    jetbrains.idea-ultimate
+    # jetbrains.rider
+    # jetbrains.idea-ultimate
     devenv
     gh
     git-lfs
@@ -39,8 +39,8 @@
     prismlauncher
     rpcs3
     shadps4
+    oversteer
 
-    qmk
     vial
     i2c-tools
 

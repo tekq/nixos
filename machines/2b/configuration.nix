@@ -23,28 +23,30 @@
   networking.networkmanager.enable = true;
   networking.hostId = "cc81040a";
 
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      input = {
+        General = {
+	  UserspaceHID = true;
+	};
+      };
+      settings = {
+	General = {
+	  MaxConnections = 10;
+	};
+      };
+    };
+  };
+
   time.timeZone = "Europe/Bucharest";
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services = {
-    desktopManager.plasma6.enable = true;
+  services.desktopManager.cosmic.enable = true;
 
-    displayManager.defaultSession = "plasma" ;
-
-    displayManager.sddm.enable = true;
-
-    displayManager.sddm.wayland.enable = true;
-  };
-
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    oxygen
-    elisa
-  ];
-
-  boot.kernelParams = [ "nvidia.NVreg_EnableGpuFirmware=0" ];
-
-  programs.dconf.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
 
   services.printing.enable = true;
 
