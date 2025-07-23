@@ -19,8 +19,11 @@
     eog
 
     godotPackages_4_3.godot
-    jetbrains.rider
-    jetbrains.idea-ultimate
+    # jetbrains.rider
+    # jetbrains.idea-ultimate
+    (jetbrains.rider.override {
+     jdk = pkgs.openjdk21;
+    })
     devenv
     gh
     git-lfs
