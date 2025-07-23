@@ -55,7 +55,7 @@
     };
 
   fileSystems."/root/containers" =
-    { device = "/nix/persist/container-files";
+    { device = "/nix/persist/home/stella/containers";
       fsType = "none";
       options = [ "bind" ];
     };
