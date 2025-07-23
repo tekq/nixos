@@ -19,6 +19,7 @@
     eog
 
     godotPackages_4_3.godot
+    unityhub
     # jetbrains.rider
     # jetbrains.idea-ultimate
     (jetbrains.rider.override {
