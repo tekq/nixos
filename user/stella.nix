@@ -11,7 +11,6 @@
     zip
     vim
     tidal-hifi
-    tutanota-desktop
     galaxy-buds-client
     qbittorrent
     mpv
