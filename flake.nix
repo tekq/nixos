@@ -21,6 +21,7 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    tidaLuna.url = "github:Inrixia/TidaLuna";
   };
 
   outputs = { self, nixpkgs, nixpkgs-small, ... }@inputs: {

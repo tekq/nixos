@@ -10,21 +10,18 @@
     unzip
     zip
     vim
-    tidal-hifi
+    inputs.tidaLuna.packages."x86_64-linux".default
     galaxy-buds-client
     qbittorrent
     mpv
     element-desktop
-    easyeffects
     eog
+    nautilus
 
-    godotPackages_4_3.godot
+    godotPackages_4_3.godot-mono
     unityhub
-    # jetbrains.rider
-    # jetbrains.idea-ultimate
-    (jetbrains.rider.override {
-     jdk = pkgs.openjdk21;
-    })
+    jetbrains.rider
+    jetbrains.idea-ultimate
     devenv
     gh
     git-lfs
@@ -48,7 +45,60 @@
     i2c-tools
 
     htop
+
+    gnomeExtensions.gnome-40-ui-improvements
   ];
+
+  gtk = {
+    enable = true;
+    
+    theme = { 
+      package = pkgs.adw-gtk3;
+      name = "adw-gtk3-dark";
+    };
+
+    font = {
+      package = pkgs.inter;
+      name = "Inter";
+    };
+
+    iconTheme = {
+      package = pkgs.morewaita-icon-theme;   
+      name = "MoreWaita";
+    };
+  };
+
+  qt.platformTheme = "gnome";
+
+  dconf.settings = {
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+      enabled-extensions = [
+        "gnome-ui-tune@itstime.tech"
+	"gsconnect@andyholmes.github.io"
+      ];
+      "keybindings/toggle-overview" = [ "<Super>comma" ];
+      "keybindings/toggle-quick-settings" = [ "<Super>period" ];
+    };
+
+    "org/gnome/desktop" = {
+      "interface/monospace-font-name" = "Hack Nerd Font Mono 10";
+      "interface/gtk-enable-primary-paste" = false;
+      "wm/preferences/button-layout" = "appmenu:minimize,maximize,close";
+      "wm/preferences/resize-with-right-button" = true;
+
+      "wm/keybindings/close" = [ "<Super>slash" ];
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      "screensaver" = [ "<Control><Super>Escape" ];
+
+      "custom-keybindings" = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ]; 
+      "custom-keybindings/custom0/binding" = "<Super>Return";
+      "custom-keybindings/custom0/command" = "kgx";
+      "custom-keybindings/custom0/name" = "Console";
+    };
+  };
 
   programs.zen-browser = {
     enable = true;

@@ -15,5 +15,7 @@
     groups.libvirtd.members = [ "stella" ];
   };
 
+  home-manager.backupFileExtension = "backup";
+
   xdg.autostart.enable = true;
 }
