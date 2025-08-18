@@ -54,12 +54,6 @@
       options = [ "bind" ];
     };
 
-  fileSystems."/root/containers" =
-    { device = "/nix/persist/home/stella/containers";
-      fsType = "none";
-      options = [ "bind" ];
-    };
-
   fileSystems."/var/lib/containers" =
     { device = "/nix/persist/var/lib/containers";
       fsType = "none";

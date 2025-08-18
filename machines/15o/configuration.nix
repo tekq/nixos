@@ -31,7 +31,7 @@
   fileSystems."/etc/nixos".options = [ "noexec" ];
   fileSystems."/var/lib/tailscale".options = [ "noexec" ];
   fileSystems."/var/log".options = [ "noexec" ];
-  fileSystems."/root/containers".options = [ "noexec" ];
+  fileSystems."/home/stella/containers".options = [ "noexec" ];
 
   services.openssh = {
     enable = true;

@@ -22,6 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tidaLuna.url = "github:Inrixia/TidaLuna";
+
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-small, ... }@inputs: {
@@ -151,5 +156,26 @@
         }
       ];
     };
+
+    colmena = {
+      meta = {
+        nixpkgs = inputs.nixpkgs;
+      };
+      
+      "15O" = {
+        imports = [ self.nixosConfigurations."15O" ];
+        targetHost = "15o.cloud";
+        user = "root";
+        description = "My Server";
+      };
+
+      "6O" = {
+        imports = [ self.nixosConfigurations."6O" ];
+        targetHost = "6o.cloud";
+        user = "root";
+        description = "My Other Server";
+      };
+    };
+
   };
 }
