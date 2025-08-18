@@ -99,84 +99,57 @@
       ];
     };
 
-    nixosConfigurations."15O" = nixpkgs-small.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-	./common/all.nix
-
-	./user/common.nix
-
-	./virt/podman.nix
-
-        ./machines/15o/configuration.nix
-
-	inputs.sops-nix.nixosModules.sops
-
-	{
-          system.autoUpgrade = {
-            enable = true;
-            flake = inputs.self.outPath;
-            flags = [
-              "--update-input"
-              "nixpkgs"
-              "-L" # print build logs
-            ];
-            dates = "10:00";
-            randomizedDelaySec = "45min";
-          };
-      	}
-      ];
-    };
-    
-    nixosConfigurations."6O" = nixpkgs-small.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-	./common/all.nix
-
-	./user/common.nix
-
-	./virt/podman.nix
-
-        ./machines/6o/configuration.nix
-        
-	inputs.sops-nix.nixosModules.sops
-
-	{
-          system.autoUpgrade = {
-            enable = true;
-            flake = inputs.self.outPath;
-            flags = [
-              "--update-input"
-              "nixpkgs"
-              "-L" # print build logs
-            ];
-            dates = "2:00";
-            randomizedDelaySec = "45min";
-          };
-        }
-      ];
-    };
-
-    colmena = {
-      meta.nixpkgs = import nixpkgs {
-        system = "x86_64-linux";
-        overlays = [];
+    colmenaHive = inputs.colmena.lib.makeHive {
+      meta = {
+        nixpkgs = inputs.nixpkgs;
       };
-      
+
       "15O" = {
-        imports = [ self.nixosConfigurations."15O" ];
-        targetHost = "15o.cloud";
-        user = "root";
-        description = "My Server";
+        deployment = {
+          targetHost = "15o.cloud";
+          targetUser = "root";
+        };
+
+        imports = [
+          ./common/all.nix
+          ./user/common.nix
+          ./virt/podman.nix
+          ./machines/15o/configuration.nix
+          inputs.sops-nix.nixosModules.sops
+          {
+            system.autoUpgrade = {
+              enable = true;
+              flake = inputs.self.outPath;
+              flags = [ "--update-input" "nixpkgs" "-L" ];
+              dates = "10:00";
+              randomizedDelaySec = "45min";
+            };
+          }
+        ];
       };
 
       "6O" = {
-        imports = [ self.nixosConfigurations."6O" ];
-        targetHost = "6o.cloud";
-        user = "root";
-        description = "My Other Server";
+        deployment = {
+          targetHost = "6o.cloud";
+          targetUser = "root";
+        };
+        imports = [
+          ./common/all.nix
+          ./user/common.nix
+          ./virt/podman.nix
+          ./machines/6o/configuration.nix
+          inputs.sops-nix.nixosModules.sops
+          {
+            system.autoUpgrade = {
+              enable = true;
+              flake = inputs.self.outPath;
+              flags = [ "--update-input" "nixpkgs" "-L" ];
+              dates = "2:00";
+              randomizedDelaySec = "45min";
+            };
+          }
+        ];
       };
     };
-
   };
 }
