@@ -50,9 +50,11 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.gnome.core-utilities.enable = false;
+
+  services.xserver.enable = false;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+  services.gnome.core-apps.enable = false;
 
   programs.kdeconnect = {
     enable = true;

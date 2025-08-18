@@ -98,6 +98,10 @@
       "custom-keybindings/custom0/command" = "kgx";
       "custom-keybindings/custom0/name" = "Console";
     };
+
+    "org/gnome/mutter" = {
+      "center-new-windows" = true;
+    };
   };
 
   programs.zen-browser = {
@@ -139,7 +143,7 @@
   programs.zsh = {
     enable = true;
     autocd = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.home.homeDirectory}/.config/zsh";
     autosuggestion.enable = true;
     enableCompletion = true;
     shellAliases = {
