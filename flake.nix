@@ -37,6 +37,8 @@
 
 	./user/common.nix
 
+	./dev/rider.nix
+
         ./virt/all.nix
 
         ./networking/tailscale.nix
