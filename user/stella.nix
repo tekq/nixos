@@ -20,7 +20,7 @@
 
     godotPackages_4_3.godot-mono
     unityhub
-    jetbrains.rider
+    # jetbrains.rider
     jetbrains.idea-ultimate
     devenv
     gh

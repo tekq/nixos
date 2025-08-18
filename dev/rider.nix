@@ -1,61 +1,76 @@
-{ options, config, pkgs, lib, inputs, ... }:
-
-with lib;
-with lib.my;
-let
+{
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib; let
   cfg = config.modules.editors.rider;
 
-  dotnetCombined = with pkgs.dotnetCorePackages;
-    combinePackages [ sdk_6_0 ];
+  extra-path = with pkgs; [
+    dotnetCorePackages.sdk_8_0
+    dotnetPackages.Nuget
+    mono
+    # msbuild
+  ];
 
-  rider-fhs = pkgs.buildFHSUserEnv {
-    name = "rider-fhs";
-    runScript = "";
-    targetPkgs = pkgs: with pkgs; [
-      dotnetCombined
-      dotnetPackages.Nuget
-      mono
-      msbuild
-    ];
-  };
+  extra-lib = with pkgs; [
+    # Personal development stuff
+    xorg.libX11
+
+    # Rider Unity debugging
+    xorg.libXcursor
+    xorg.libXrandr
+    libglvnd
+  ];
 
   rider = pkgs.jetbrains.rider.overrideAttrs (attrs: {
-    postInstall = ''
-      # wrap rider in my custom fhs which has some dependencies
-      mv $out/bin/rider $out/bin/.rider-unwrapped
+    postInstall =
+      (attrs.postInstall or "")
+      + ''
+        # Wrap rider with extra tools and libraries
+        mv $out/bin/rider $out/bin/.rider-toolless
+        makeWrapper $out/bin/.rider-toolless $out/bin/rider \
+          --argv0 rider \
+          --prefix PATH : "${lib.makeBinPath extra-path}" \
+          --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath extra-lib}"
 
-      cat >$out/bin/rider <<EOL
-      #!${pkgs.bash}/bin/bash
-      ${rider-fhs}/bin/rider-fhs $out/bin/.rider-unwrapped "\$@"
-      EOL
-
-      chmod +x $out/bin/rider
-
-      ## Making Unity Rider plugin work!
-      # unity plugins looks for a build.txt at ../../build.txt, relative to binary
-      # same for hte product-info.json, both are used for BuildVersion and Numbers
-      ln -s $out/rider/build.txt $out/
-      ln -s $out/rider/product-info.json $out/
-
-      # looks for ../../plugins/rider-unity, relative to binary
-      # it needs some dll file in there, which it uses to bind to rider
-      ln -s $out/rider/plugins $out/plugins
-    '' + attrs.postInstall or "";
+        # Making Unity Rider plugin work!
+        # The plugin expects the binary to be at /rider/bin/rider, with bundled files at /rider/
+        # It does this by going up one directory from the directory the binary is in
+        # We have rider binary at $out/bin/rider, so we need to link /rider/ to $out/
+        shopt -s extglob
+        ln -s $out/rider/!(bin) $out/
+        shopt -u extglob
+      '';
   });
-in
-{
+in {
   options.modules.editors.rider = {
-    enable = mkBoolOpt false;
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+    };
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ rider ];
+    environment.systemPackages = [rider];
 
-    # unity looks for rider binary path in this location, trick it!
-    home-manager.users.huantian.home.file = {
-      ".local/share/applications/jetbrains-rider.desktop".text = ''
-        Exec="${rider}/bin/rider"
-      '';
+    # Unity Rider plugin looks here for a .desktop file,
+    # which it uses to find the path to the rider binary.
+    home-manager.users.stella.home.file = {
+      ".local/share/applications/jetbrains-rider.desktop".source = let
+        desktopFile = pkgs.makeDesktopItem {
+          name = "jetbrains-rider";
+          desktopName = "Rider";
+          exec = "\"${rider}/bin/rider\"";
+          icon = "rider";
+          type = "Application";
+          # Don't show desktop icon in search or run launcher
+          extraConfig.NoDisplay = "true";
+        };
+      in "${desktopFile}/share/applications/jetbrains-rider.desktop";
     };
   };
 }

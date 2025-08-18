@@ -82,6 +82,8 @@
 
   services.udev.packages = [ pkgs.via ];
 
+  modules.editors.rider.enable = true;
+
   environment.systemPackages = [
     pkgs.vim
     pkgs.git
