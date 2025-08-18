@@ -26,6 +26,8 @@
     gh
     git-lfs
 
+    colmena
+
     starship
 
     bat
