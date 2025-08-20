@@ -22,6 +22,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tidaLuna.url = "github:Inrixia/TidaLuna";
+    colmena.url = "github:zhaofengli/colmena";
   };
 
   outputs = { self, nixpkgs, nixpkgs-small, ... }@inputs: {
@@ -94,62 +95,20 @@
       ];
     };
 
-    nixosConfigurations."15O" = nixpkgs-small.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-	./common/all.nix
+    colmenaHive = inputs.colmena.lib.makeHive {
+      meta = {
+	nixpkgs = import nixpkgs-small {
+	  system = "x86_64-linux";
+	  overlays = [];
+	};
+      };
 
-	./user/common.nix
-
-	./virt/podman.nix
-
-        ./machines/15o/configuration.nix
-
-	inputs.sops-nix.nixosModules.sops
-
-	{
-          system.autoUpgrade = {
-            enable = true;
-            flake = inputs.self.outPath;
-            flags = [
-              "--update-input"
-              "nixpkgs"
-              "-L" # print build logs
-            ];
-            dates = "10:00";
-            randomizedDelaySec = "45min";
-          };
-      	}
-      ];
-    };
-    
-    nixosConfigurations."6O" = nixpkgs-small.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-	./common/all.nix
-
-	./user/common.nix
-
-	./virt/podman.nix
-
-        ./machines/6o/configuration.nix
-        
-	inputs.sops-nix.nixosModules.sops
-
-	{
-          system.autoUpgrade = {
-            enable = true;
-            flake = inputs.self.outPath;
-            flags = [
-              "--update-input"
-              "nixpkgs"
-              "-L" # print build logs
-            ];
-            dates = "2:00";
-            randomizedDelaySec = "45min";
-          };
-        }
-      ];
+      "15O" = {
+	deployment = {
+	  targetHost = "15O";
+	  targetUser = "root";
+	};
+      };
     };
   };
 }

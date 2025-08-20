@@ -27,6 +27,14 @@
 
   nix.settings.allowed-users = [ "root" ];
 
+  users = {
+    users.stella = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ];
+    };
+  };
+
+
   fileSystems."/".options = [ "noexec" ];
   fileSystems."/etc/nixos".options = [ "noexec" ];
   fileSystems."/var/lib/tailscale".options = [ "noexec" ];
