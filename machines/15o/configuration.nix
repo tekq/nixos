@@ -53,12 +53,6 @@
     };
   };
 
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-
   environment.etc."machine-id".source
     = "/nix/persist/etc/machine-id";
   environment.etc."ssh/ssh_host_rsa_key".source

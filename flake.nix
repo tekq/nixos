@@ -108,6 +108,37 @@
 	  targetHost = "15O";
 	  targetUser = "root";
 	};
+
+	imports = [
+	  ./common/configuration.nix
+
+	  ./virt/podman.nix
+
+	  ./machines/15o/configuration.nix
+
+	  ./machines/15o/hardware-configuration.nix
+	];
+
+	users.allowNoPasswordLogin = true;
+      };
+
+    "6O" = {
+        deployment = {
+          targetHost = "6O";
+          targetUser = "root";
+        };
+
+        imports = [
+          ./common/configuration.nix
+
+          ./virt/podman.nix
+
+          ./machines/6o/configuration.nix
+
+          ./machines/6o/digital-ocean.nix
+        ];
+
+        users.allowNoPasswordLogin = true;
       };
     };
   };
