@@ -26,7 +26,7 @@
     gh
     git-lfs
 
-    colmena
+    morph
 
     starship
 
@@ -39,6 +39,7 @@
     tokei
 
     prismlauncher
+    mcpelauncher-ui-qt
     rpcs3
     shadps4
     oversteer
