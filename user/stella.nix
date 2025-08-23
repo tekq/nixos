@@ -96,6 +96,8 @@
     "org/gnome/desktop" = {
       "interface/monospace-font-name" = "Hack Nerd Font Mono 10";
       "interface/gtk-enable-primary-paste" = false;
+      "interface/color-scheme" = "prefer-dark";
+
       "wm/preferences/button-layout" = "appmenu:minimize,maximize,close";
       "wm/preferences/resize-with-right-button" = true;
 
