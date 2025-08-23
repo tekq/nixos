@@ -23,6 +23,8 @@
 
   services.scx.enable = true;
 
+  security.apparmor.enable = true;
+
   networking.hostName = "2B";
   networking.networkmanager.enable = true;
   networking.hostId = "cc81040a";
