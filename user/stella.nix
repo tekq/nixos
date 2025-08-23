@@ -17,6 +17,8 @@
     element-desktop
     eog
     nautilus
+    kgx
+    opencloud-desktop
 
     godotPackages_4_3.godot-mono
     unityhub
