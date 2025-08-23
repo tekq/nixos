@@ -35,6 +35,7 @@
         ./machines/2b/nvidia.nix
 	./machines/2b/gaming.nix
         ./machines/2b/impermanence.nix
+	./machines/2b/kernel.nix
 
 	./user/common.nix
 
