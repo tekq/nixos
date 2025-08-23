@@ -1,6 +1,5 @@
 {
   virtualisation.libvirtd.enable = true;
-  users.extraUsers.youruser.extraGroups = [ "libvirtd" ];
 
   boot.extraModprobeConfig = ''
     options kvm_amd nested=1

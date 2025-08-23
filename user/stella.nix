@@ -1,6 +1,11 @@
 { config, pkgs, lib, inputs, ...}:
 
 {
+  imports = 
+    [
+      ./wallpaper.nix
+    ];
+
   home.username = "stella";
   home.homeDirectory = "/home/stella";
 
@@ -52,6 +57,7 @@
     htop
 
     gnomeExtensions.gnome-40-ui-improvements
+    gnomeExtensions.bluetooth-battery-meter
   ];
 
   gtk = {
@@ -81,6 +87,7 @@
       enabled-extensions = [
         "gnome-ui-tune@itstime.tech"
 	"gsconnect@andyholmes.github.io"
+	"Bluetooth-Battery-Meter@maniacx.github.com"
       ];
       "keybindings/toggle-overview" = [ "<Super>comma" ];
       "keybindings/toggle-quick-settings" = [ "<Super>period" ];
