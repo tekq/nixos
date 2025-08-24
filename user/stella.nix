@@ -4,6 +4,7 @@
   imports = 
     [
       ./wallpaper.nix
+      ./zen-extensions.nix
     ];
 
   home.username = "stella";
