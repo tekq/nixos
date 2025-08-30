@@ -24,6 +24,7 @@
     nautilus
     kgx
     opencloud-desktop
+    bottles
 
     godotPackages_4_3.godot-mono
     unityhub
@@ -32,8 +33,6 @@
     devenv
     gh
     git-lfs
-
-    morph
 
     starship
 
@@ -58,6 +57,7 @@
 
     gnomeExtensions.gnome-40-ui-improvements
     gnomeExtensions.bluetooth-battery-meter
+    gnomeExtensions.tailscale-qs
   ];
 
   gtk = {
@@ -88,6 +88,7 @@
         "gnome-ui-tune@itstime.tech"
 	"gsconnect@andyholmes.github.io"
 	"Bluetooth-Battery-Meter@maniacx.github.com"
+	"tailscale@joaophi.github.com"
       ];
       "keybindings/toggle-overview" = [ "<Super>comma" ];
       "keybindings/toggle-quick-settings" = [ "<Super>period" ];

@@ -1,8 +1,8 @@
 { pkgs, config, ... }:
 let
   wallpaper = pkgs.fetchurl {
-    url = "https://invent.kde.org/plasma/breeze/-/raw/master/wallpapers/Next/contents/images_dark/7680x2160.png";
-    sha256 = "1v5sxncm9bmhzdpcqq5faikmyfb1106wxwkbxbqswwd0dgb7qxpz";
+    url = "https://invent.kde.org/plasma/plasma-workspace-wallpapers/-/raw/master/Patak/contents/images_dark/3840x2160.png";
+    sha256 = "033gpip4ms97zahm40s29k4nsmv34zwpyh3pczwh5fwq0zgb625l";
   };
 in
 {
