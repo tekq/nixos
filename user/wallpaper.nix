@@ -1,8 +1,8 @@
 { pkgs, config, ... }:
 let
   wallpaper = pkgs.fetchurl {
-    url = "https://invent.kde.org/plasma/plasma-workspace-wallpapers/-/raw/master/Patak/contents/images_dark/3840x2160.png";
-    sha256 = "033gpip4ms97zahm40s29k4nsmv34zwpyh3pczwh5fwq0zgb625l";
+    url = "https://512pixels.net/downloads/macos-wallpapers-6k/26-Tahoe-Dark-6K.png";
+    sha256 = "1nqqa0zwhr6fda96ky0jiw5yrhp9c784ibsly09dq0hvlf2bd8l6";
   };
 in
 {
