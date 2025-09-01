@@ -1,0 +1,7 @@
+keys:
+  - &stella age147e2js7zqmkg26k5cshyukwx72uh57wvfz2y22cum0tam4alj9vqszmjyz
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *stella
