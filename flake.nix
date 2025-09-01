@@ -68,29 +68,9 @@
           home-manager.sharedModules = [
 		inputs.nixcord.homeModules.nixcord
 		inputs.zen-browser.homeModules.twilight
+		inputs.sops-nix.homeManagerModules.sops
 	  ];
           home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux";};
-        }
-      ];
-    };
-
-    nixosConfigurations."9S" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-	./common/all.nix
-
-	./user/common.nix
-
-        ./machines/9s/configuration.nix
-
-	inputs.sops-nix.nixosModules.sops
-        inputs.home-manager.nixosModules.home-manager
-
-        { 
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.stella = import ./user/stella.nix;
-          home-manager.sharedModules = [ inputs.nixcord.homeModules.nixcord ];
         }
       ];
     };
@@ -114,9 +94,13 @@
 
 	  ./virt/podman.nix
 
-	  ./machines/15o/configuration.nix
+	  ./machines/servers/15o/configuration.nix
 
-	  ./machines/15o/hardware-configuration.nix
+	  ./machines/servers/15o/hardware-configuration.nix
+
+	  ./machines/servers/15o/audiobookshelf.nix
+
+	  ./machines/servers/tailscale-fix.nix
 	];
 
 	users.allowNoPasswordLogin = true;
@@ -133,9 +117,11 @@
 
           ./virt/podman.nix
 
-          ./machines/6o/configuration.nix
+          ./machines/servers/6o/configuration.nix
 
-          ./machines/6o/digital-ocean.nix
+          ./machines/servers/6o/digital-ocean.nix
+
+          ./machines/servers/tailscale-fix.nix
         ];
 
         users.allowNoPasswordLogin = true;
