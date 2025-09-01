@@ -90,6 +90,8 @@
 	};
 
 	imports = [
+          inputs.sops-nix.nixosModules.sops
+
 	  ./common/configuration.nix
 
 	  ./virt/podman.nix
@@ -97,8 +99,6 @@
 	  ./machines/servers/15o/configuration.nix
 
 	  ./machines/servers/15o/hardware-configuration.nix
-
-	  ./machines/servers/15o/audiobookshelf.nix
 
 	  ./machines/servers/tailscale-fix.nix
 	];
