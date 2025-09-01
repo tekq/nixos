@@ -101,6 +101,8 @@
 	  ./machines/servers/15o/hardware-configuration.nix
 
 	  ./machines/servers/tailscale-fix.nix
+
+	  ./machines/servers/docker-compose.nix
 	];
 
 	users.allowNoPasswordLogin = true;
