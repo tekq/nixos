@@ -15,8 +15,8 @@
     unzip
     zip
     vim
-    # inputs.tidaLuna.packages."x86_64-linux".default
-    tidal-hifi
+    inputs.tidaLuna.packages."x86_64-linux".default
+    # tidal-hifi
     galaxy-buds-client
     qbittorrent
     mpv
