@@ -39,7 +39,6 @@
 	./user/common.nix
 
 	./dev/rider.nix
-	./dev/chaotic.nix
 
         ./virt/all.nix
 
