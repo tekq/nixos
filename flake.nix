@@ -39,6 +39,7 @@
 	./user/common.nix
 
 	./dev/rider.nix
+	./dev/chaotic.nix
 
         ./virt/all.nix
 
@@ -53,9 +54,7 @@
 
         inputs.sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
-        inputs.chaotic.nixosModules.nyx-cache
-        inputs.chaotic.nixosModules.nyx-overlay
-        inputs.chaotic.nixosModules.nyx-registry
+        inputs.chaotic.nixosModules.default
 	inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
 
