@@ -17,6 +17,8 @@
     efi.canTouchEfiVariables = true;
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+
   services.scx.enable = true;
 
   security.apparmor.enable = true;
