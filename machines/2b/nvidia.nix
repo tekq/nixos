@@ -18,7 +18,7 @@
     
     nvidiaSettings = false;
 
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
   boot.kernelParams = [
