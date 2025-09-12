@@ -12,6 +12,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    ffmpeg
     unzip
     zip
     vim

@@ -25,6 +25,8 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "conservative";
 
+  powerManagement.powertop.enable = true;
+
   nix.settings.allowed-users = [ "root" ];
 
   users = {
