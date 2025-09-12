@@ -32,6 +32,7 @@
     unityhub
     # jetbrains.rider
     jetbrains.idea-ultimate
+    jetbrains.clion
     devenv
     gh
     git-lfs
