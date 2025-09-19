@@ -27,6 +27,7 @@
     kgx
     opencloud-desktop
     bottles
+    easyeffects
 
     godotPackages_4_3.godot-mono
     unityhub
@@ -36,6 +37,9 @@
     devenv
     gh
     git-lfs
+    libgcc
+    gcc
+    nodePackages_latest.nodejs
 
     starship
 
