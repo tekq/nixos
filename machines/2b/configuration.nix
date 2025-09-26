@@ -50,16 +50,8 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-
-  services.xserver.enable = false;
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-  services.gnome.core-apps.enable = false;
-
-  programs.kdeconnect = {
-    enable = true;
-    package = pkgs.gnomeExtensions.gsconnect;
-  };
+  services.desktopManager.cosmic.enable = true;  
+  services.displayManager.cosmic-greeter.enable = true;
 
   services.printing.enable = true;
 
