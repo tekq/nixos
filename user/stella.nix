@@ -19,6 +19,7 @@
     eog
     bottles
     easyeffects
+    sayonara
 
     vscode
     godotPackages_4_3.godot-mono
