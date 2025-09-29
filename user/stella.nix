@@ -16,11 +16,7 @@
     galaxy-buds-client
     qbittorrent
     mpv
-    element-desktop
     eog
-    nautilus
-    kgx
-    opencloud-desktop
     bottles
     easyeffects
 
@@ -57,7 +53,6 @@
     i2c-tools
 
     htop
-
   ];
 
   programs.zen-browser = {

@@ -17,7 +17,9 @@
     efi.canTouchEfiVariables = true;
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-gcc;
+  # boot.kernelPackages = pkgs.linuxPackages_cachyos-gcc;
+
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-gcc.cachyOverride { mArch = "ZEN4"; };
 
   services.scx.enable = true;
 
