@@ -19,7 +19,7 @@
     eog
     bottles
     easyeffects
-    sayonara
+    rhythmbox
 
     vscode
     godotPackages_4_3.godot-mono
@@ -27,6 +27,7 @@
     # jetbrains.rider
     jetbrains.idea-ultimate
     jetbrains.clion
+    jetbrains.gateway
     devenv
     gh
     git-lfs

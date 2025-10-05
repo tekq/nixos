@@ -26,6 +26,8 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-small, ... }@inputs: {
+    packages.x86_64-linux.helium-browser = (nixpkgs.legacyPackages.x86_64-linux.callPackage ./common/helium.nix { });
+
     nixosConfigurations."2B" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ 
