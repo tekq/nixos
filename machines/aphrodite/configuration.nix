@@ -19,13 +19,13 @@
 
   # boot.kernelPackages = pkgs.linuxPackages_cachyos-gcc;
 
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-gcc.cachyOverride { mArch = "ZEN4"; };
+  #boot.kernelPackages = pkgs.linuxPackages_cachyos-gcc.cachyOverride { mArch = "ZEN4"; };
 
   services.scx.enable = true;
 
   security.apparmor.enable = true;
 
-  networking.hostName = "2B";
+  networking.hostName = "Aphrodite";
   networking.networkmanager.enable = true;
   networking.hostId = "cc81040a";
 
@@ -54,6 +54,8 @@
 
   services.desktopManager.cosmic.enable = true;  
   services.displayManager.cosmic-greeter.enable = true;
+
+  services.gnome.gnome-keyring.enable = true;
 
   services.printing.enable = true;
 

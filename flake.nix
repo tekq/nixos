@@ -21,6 +21,10 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    winboat = {
+      url = "github:TibixDev/winboat";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     tidaLuna.url = "github:Inrixia/TidaLuna";
     colmena.url = "github:zhaofengli/colmena";
   };
@@ -28,15 +32,15 @@
   outputs = { self, nixpkgs, nixpkgs-small, ... }@inputs: {
     packages.x86_64-linux.helium-browser = (nixpkgs.legacyPackages.x86_64-linux.callPackage ./common/helium.nix { });
 
-    nixosConfigurations."2B" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."Aphrodite" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ 
 	./common/all.nix
 
-        ./machines/2b/configuration.nix
-        ./machines/2b/nvidia.nix
-	./machines/2b/gaming.nix
-        ./machines/2b/impermanence.nix
+        ./machines/aphrodite/configuration.nix
+        ./machines/aphrodite/nvidia.nix
+	./machines/aphrodite/gaming.nix
+        ./machines/aphrodite/impermanence.nix
 
 	./user/common.nix
 
@@ -71,6 +75,12 @@
 		inputs.sops-nix.homeManagerModules.sops
 	  ];
           home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux";};
+
+          nixpkgs.overlays = [
+            (final: prev: {
+              helium-browser = self.packages.${final.system}.helium-browser;
+            })
+          ];
         }
       ];
     };

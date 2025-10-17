@@ -13,6 +13,8 @@
     };
 
     groups.libvirtd.members = [ "stella" ];
+
+    extraGroups.docker.members = [ "stella" ];
   };
 
   home-manager.backupFileExtension = "backup";

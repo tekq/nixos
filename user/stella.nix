@@ -7,6 +7,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    helium-browser
     ffmpeg
     unzip
     zip
@@ -18,8 +19,12 @@
     mpv
     eog
     bottles
+    inputs.winboat.packages."x86_64-linux".winboat
+    virtualbox
+    freerdp
     easyeffects
     rhythmbox
+    tutanota-desktop
 
     vscode
     godotPackages_4_3.godot-mono
@@ -51,7 +56,6 @@
     shadps4
     oversteer
 
-    vial
     i2c-tools
 
     htop
