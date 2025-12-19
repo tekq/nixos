@@ -18,15 +18,14 @@
     unzip
     zip
     vim
-    #inputs.tidaLuna.packages."x86_64-linux".default
-    tidal-hifi
-    high-tide
+    inputs.tidaLuna.packages."x86_64-linux".default
+    # tidal-hifi
     galaxy-buds-client
     qbittorrent
     mpv
     eog
     bottles
-    # winboat
+    winboat
     freerdp
     easyeffects
     rhythmbox
@@ -36,7 +35,6 @@
     vscode
     godotPackages_4_3.godot-mono
     unityhub
-    # jetbrains.rider
     jetbrains.idea-ultimate
     jetbrains.clion
     jetbrains.gateway

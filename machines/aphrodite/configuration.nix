@@ -6,8 +6,6 @@
       ./hardware-configuration.nix
     ];
 
-  networking.firewall.enable = false;
-
   boot.loader = {
     systemd-boot = {
       enable = true;
