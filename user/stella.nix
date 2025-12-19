@@ -1,30 +1,37 @@
 { config, pkgs, lib, inputs, ...}:
 
 {
+  imports = 
+    [
+      ./wallpaper.nix
+    ];
+
   home.username = "stella";
   home.homeDirectory = "/home/stella";
 
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    helium-browser
+    gnome-console
+    nautilus
     ffmpeg
     unzip
     zip
     vim
-    inputs.tidaLuna.packages."x86_64-linux".default
-    # tidal-hifi
+    #inputs.tidaLuna.packages."x86_64-linux".default
+    tidal-hifi
+    high-tide
     galaxy-buds-client
     qbittorrent
     mpv
     eog
     bottles
-    inputs.winboat.packages."x86_64-linux".winboat
-    virtualbox
+    # winboat
     freerdp
     easyeffects
     rhythmbox
     tutanota-desktop
+    gnome-boxes
 
     vscode
     godotPackages_4_3.godot-mono
@@ -39,6 +46,8 @@
     libgcc
     gcc
     nodePackages_latest.nodejs
+    nss
+    github-copilot-cli
 
     starship
 
@@ -52,14 +61,81 @@
 
     prismlauncher
     mcpelauncher-ui-qt
-    rpcs3
+    #rpcs3
     shadps4
     oversteer
 
     i2c-tools
 
     htop
+
+    gnomeExtensions.gnome-40-ui-improvements
+    gnomeExtensions.bluetooth-battery-meter
+    gnomeExtensions.tailscale-qs
+    gnomeExtensions.blur-my-shell
   ];
+
+  gtk = {
+    enable = true;
+    
+    theme = { 
+      package = pkgs.adw-gtk3;
+      name = "adw-gtk3-dark";
+    };
+
+    font = {
+      package = pkgs.inter;
+      name = "Inter";
+    };
+
+    iconTheme = {
+      package = pkgs.morewaita-icon-theme;   
+      name = "MoreWaita";
+    };
+  };
+
+  qt.platformTheme = "gnome";
+
+  dconf.settings = {
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+      enabled-extensions = [
+        "gnome-ui-tune@itstime.tech"
+	"gsconnect@andyholmes.github.io"
+	"Bluetooth-Battery-Meter@maniacx.github.com"
+	"tailscale@joaophi.github.com"
+	"blur-my-shell@aunetx"
+      ];
+      "keybindings/toggle-overview" = [ "<Super>comma" ];
+      "keybindings/toggle-quick-settings" = [ "<Super>period" ];
+    };
+
+    "org/gnome/desktop" = {
+      "interface/monospace-font-name" = "Hack Nerd Font Mono 10";
+      "interface/gtk-enable-primary-paste" = false;
+      "interface/color-scheme" = "prefer-dark";
+
+      "wm/preferences/button-layout" = "appmenu:minimize,maximize,close";
+      "wm/preferences/resize-with-right-button" = true;
+
+      "wm/keybindings/close" = [ "<Super>slash" ];
+
+      "peripherals/mouse/accel-profile" = "flat";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      "screensaver" = [ "<Control><Super>Escape" ];
+
+      "custom-keybindings" = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ]; 
+      "custom-keybindings/custom0/binding" = "<Super>Return";
+      "custom-keybindings/custom0/command" = "kgx";
+      "custom-keybindings/custom0/name" = "Console";
+    };
+
+    "org/gnome/mutter" = {
+      "center-new-windows" = true;
+    };
+  };
 
   programs.zen-browser = {
     enable = true;

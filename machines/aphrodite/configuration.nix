@@ -6,6 +6,8 @@
       ./hardware-configuration.nix
     ];
 
+  networking.firewall.enable = false;
+
   boot.loader = {
     systemd-boot = {
       enable = true;
@@ -16,12 +18,6 @@
 
     efi.canTouchEfiVariables = true;
   };
-
-  # boot.kernelPackages = pkgs.linuxPackages_cachyos-gcc;
-
-  #boot.kernelPackages = pkgs.linuxPackages_cachyos-gcc.cachyOverride { mArch = "ZEN4"; };
-
-  services.scx.enable = true;
 
   security.apparmor.enable = true;
 
@@ -48,14 +44,29 @@
 
   hardware.logitech.wireless.enable = true;
 
+  services.pipewire.extraConfig.pipewire."hi-res-dac" = {
+    "context.properties" = {
+      "default.clock.allowed-rates" = [ 44100 48000 88200 96000 176400 192000 ];
+    };
+
+    "stream.properties" = {
+      "resample.quality" = 14;
+    };
+  };
+
   time.timeZone = "Europe/Bucharest";
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.desktopManager.cosmic.enable = true;  
-  services.displayManager.cosmic-greeter.enable = true;
+  services.xserver.enable = false;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+  services.gnome.core-apps.enable = false;
 
-  services.gnome.gnome-keyring.enable = true;
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
 
   services.printing.enable = true;
 
@@ -81,6 +92,8 @@
   services.udev.packages = [ pkgs.via ];
 
   modules.editors.rider.enable = true;
+
+  virtualisation.virtualbox.host.enable = true;
 
   environment.systemPackages = [
     pkgs.vim

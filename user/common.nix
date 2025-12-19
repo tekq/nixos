@@ -14,6 +14,8 @@
 
     groups.libvirtd.members = [ "stella" ];
 
+    extraGroups.vboxusers.members = [ "stella" ];
+
     extraGroups.docker.members = [ "stella" ];
   };
 

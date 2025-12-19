@@ -9,20 +9,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
+      url = "github:nix-community/lanzaboote/v0.4.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     sops-nix.url = "github:Mic92/sops-nix";
     nixcord.url = "github:kaylorben/nixcord";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     impermanence.url = "github:nix-community/impermanence";
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    winboat = {
-      url = "github:TibixDev/winboat";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tidaLuna.url = "github:Inrixia/TidaLuna";
@@ -59,7 +54,6 @@
 
         inputs.sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
-        inputs.chaotic.nixosModules.default
 	inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
 
@@ -75,12 +69,6 @@
 		inputs.sops-nix.homeManagerModules.sops
 	  ];
           home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux";};
-
-          nixpkgs.overlays = [
-            (final: prev: {
-              helium-browser = self.packages.${final.system}.helium-browser;
-            })
-          ];
         }
       ];
     };
